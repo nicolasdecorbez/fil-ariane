@@ -1,0 +1,31 @@
+{
+  "name": "secure-api",
+  "version": "0.1.0",
+  "description": "first attempt to make a secured API",
+  "main": "API/server.js",
+  "scripts": {
+    "start": "node API/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicolasdecorbez/secure-api.git"
+  },
+  "author": "Nicolas DECORBEZ <decorbezpro@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicolasdecorbez/secure-api/issues"
+  },
+  "homepage": "https://github.com/nicolasdecorbez/secure-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.12.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.23.0"
+  }
+}
