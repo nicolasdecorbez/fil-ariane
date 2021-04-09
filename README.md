@@ -21,13 +21,18 @@ $ npm start
 
 ```console
 $ docker build -t secure-api/local .
-$ docker run -d -p 8080:8080 secure-api/local
+$ docker run -d --network=host secure-api/local
 ```
+> :warning: `--network=host` permet la connexion à un mongodb en local sur VOTRE machine. Elle sera retirée au moment où la DB sera déployé dans un container également
+> Aussi, ça annule la redirection de port, qu'on aurait écrit `-p 8080:8080`. Ce sera remis en place à l'avenir.
 
 ## Test
 
 En vous rendant à l'adresse <http://localhost:8080/api/bob> vous devriez voir le message suivant apparaître :
-```
+```console
+nico@nico-dev [12:06:32] [~]
+-> $ curl http://localhost:8080/api/bob
+
 Bob the builder can break your step
 ```
 
