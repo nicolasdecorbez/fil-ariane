@@ -1,0 +1,25 @@
+############################################
+#                                          #
+# Custom configuration file for Traefik v2 #
+#                                          #
+############################################
+
+[global]
+  sendAnonymousUsage = false
+
+[log]
+  level = "DEBUG"
+
+[providers]
+  [providers.docker]
+    endpoint = "unix:///var/run/docker.sock"
+    exposedByDefault = true
+
+[api]
+  insecure = true
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+  [entryPoints.websecure]
+    address = ":443"
