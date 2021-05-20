@@ -26,6 +26,9 @@ services:
 
   traefik:
     image: traefik:2.4.8
+    labels:
+      - traefik.http.routers.dashboard.rule=Host(`proxy.ardiane.local`)
+      - traefik.http.routers.dashboard.service=api@internal
     ports:
       - "80:80"
       - "8080:8080"
