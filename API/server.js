@@ -5,7 +5,7 @@ const routes = require("./Routes/routes");
 // Mise en place des headers
 const cors = require("cors");
 
-const API_PORT = 8080;
+const API_PORT = 9000;
 
 const app = express();
 app.use(express.json());
