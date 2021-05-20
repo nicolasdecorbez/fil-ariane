@@ -1,0 +1,39 @@
+---
+version: "3"
+
+
+services:
+  api:
+    build: ./API
+    environment:
+      DATABASE_USER: "ardiane"
+      DATABASE_PASSWORD: "password"
+      DATABASE_DB: "ardiane"
+      DATABASE_HOST: "database"
+    labels:
+      - traefik.http.routers.api.rule=Host(`api.ardiane.local`)
+    restart: on-failure
+
+  database:
+    image: postgres:13.3
+    environment:
+      POSTGRES_USER: "ardiane"
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: "ardiane"
+    restart: on-failure
+    volumes:
+      - "ardiane-data:/var/lib/postgresql/data"
+
+  traefik:
+    image: traefik:2.4.8
+    ports:
+      - "80:80"
+      - "8080:8080"
+    restart: on-failure
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./traefik/traefik.toml:/traefik.toml"
+
+
+volumes:
+  ardiane-data: {}
