@@ -9,10 +9,9 @@ const API_PORT = 9000;
 
 const app = express();
 app.use(express.json());
-app.use("/api", routes);
+app.use("/", routes);
 
 app.listen(API_PORT, () => {
   console.log("Server is running !");
   console.log("> Port\t: " + API_PORT);
-  console.log("> URL\t: http://localhost:" + API_PORT + "/api/hc");
 });

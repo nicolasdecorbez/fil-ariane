@@ -28,8 +28,20 @@ const pool = new Pool({
 router.get("/hc", async (req,res) => {
   try {
     res.status(HTTP_OK).send("All systems OK\n");
-  } catch (err) {
-    res.send(err);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+router.get("/users", async (req,res) => {
+  const client = await pool.connect()
+  try {
+    const users = await client.query('SELECT * FROM users');
+    res.status(HTTP_OK).send(users);
+  } catch (error) {
+    res.send(error);
+  } finally {
+    client.release()
   }
 });
 
