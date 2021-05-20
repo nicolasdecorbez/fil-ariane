@@ -1,4 +1,7 @@
 const express = require("express");
+const Pool = require('pg').Pool
+
+// Creation de notre router
 const router = express.Router();
 
 // HTTP Response codes
@@ -6,12 +9,25 @@ const HTTP_OK = 200;
 const HTTP_CREATED = 201;
 const HTTP_NO_CONTENT = 204;
 
-const Contact = require("../Models/Contact");
+// Database information
+const DATABASE_HOST = process.env["DATABASE_HOST"] || "database";
+const DATABASE_NAME = process.env["DATABASE_NAME"] || "ardiane";
+const DATABASE_USER = process.env["DATABASE_USER"] || "ardiane";
+const DATABASE_PASSWORD = process.env["DATABASE_PASSWORD"] || "P4$$w0rD";
 
-// Route de test pour check la mise en place
-router.get("/bob", async (req,res) => {
+// Définition des information de notre database
+const pool = new Pool({
+  user: DATABASE_USER,
+  host: DATABASE_HOST,
+  database: DATABASE_NAME,
+  password: DATABASE_PASSWORD,
+  port: 5432,
+})
+
+// Health Check
+router.get("/hc", async (req,res) => {
   try {
-    res.status(HTTP_OK).send("Bob the builder can break your step\n");
+    res.status(HTTP_OK).send("All systems OK\n");
   } catch (err) {
     res.send(err);
   }
