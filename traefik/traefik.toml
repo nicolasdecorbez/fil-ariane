@@ -8,7 +8,7 @@
   sendAnonymousUsage = false
 
 [log]
-  level = "DEBUG"
+  level = "ERROR"
 
 [providers]
   [providers.docker]
