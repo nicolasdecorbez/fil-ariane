@@ -2,7 +2,7 @@
 set -e
 
 psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-EOSQL
-CREATE TABLE users ()
+CREATE TABLE users (
   id INT PRIMARY KEY NOT NULL,
   nom VARCHAR(100),
   prenom VARCHAR(100),
