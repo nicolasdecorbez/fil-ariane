@@ -26,8 +26,10 @@ const pool = new Pool({
 
 // Définition des queries
 const insert_user = "INSERT INTO users (username, name, firstname, phone, email) VALUES ($1, $2, $3, $4, $5);";
-const get_user_by_id = "SELECT * FROM users WHERE id = $1";
+
 const get_users = "SELECT * FROM users";
+// const get_user_by_id = get_users + " WHERE id = $1";
+const get_user_by_username = get_users + " WHERE username = $1";
 
 // Health Check
 router.get("/hc", async (req,res) => {
@@ -50,13 +52,11 @@ router.get("/users", async (req,res) => {
   }
 });
 
-router.get("/user/:id", async (req,res) => {
-  const user_id = parseInt(req.params.id);
+router.get("/user/:username", async (req,res) => {
   const client = await pool.connect();
-
   const query = {
     text: get_user_by_id,
-    values: [ user_id ]
+    values: [ req.params.username ]
   };
 
   try {
