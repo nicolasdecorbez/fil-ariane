@@ -26,6 +26,8 @@ const pool = new Pool({
 
 // Définition des queries
 const insert_user = "INSERT INTO users (username, name, firstname, phone, email) VALUES ($1, $2, $3, $4, $5);";
+const get_user_by_id = "SELECT * FROM users WHERE id = $1";
+const get_users = "SELECT * FROM users";
 
 // Health Check
 router.get("/hc", async (req,res) => {
@@ -39,7 +41,26 @@ router.get("/hc", async (req,res) => {
 router.get("/users", async (req,res) => {
   const client = await pool.connect();
   try {
-    const users = await client.query("SELECT * FROM users");
+    const users = await client.query(get_users);
+    res.status(HTTP_OK).send(users);
+  } catch (error) {
+    res.send(error);
+  } finally {
+    client.release();
+  }
+});
+
+router.get("/user/:id", async (req,res) => {
+  const user_id = parseInt(req.params.id);
+  const client = await pool.connect();
+
+  const query = {
+    text: get_user_by_id,
+    values: [ user_id ]
+  };
+
+  try {
+    const users = await client.query(query);
     res.status(HTTP_OK).send(users);
   } catch (error) {
     res.send(error);
@@ -50,17 +71,18 @@ router.get("/users", async (req,res) => {
 
 router.post("/user", async (req,res) => {
   const client = await pool.connect();
+  const query = {
+    text: insert_user,
+    values: [
+      req.body.username,
+      req.body.name,
+      req.body.firstname,
+      req.body.phone,
+      req.body.email
+    ]
+  };
+
   try {
-    const query = {
-      text: insert_user,
-      values: [
-        req.body.username,
-        req.body.name,
-        req.body.firstname,
-        req.body.phone,
-        req.body.email
-      ]
-    };
     const user = await client.query(query);
     res.status(HTTP_CREATED).send(user);
   } catch (error) {
