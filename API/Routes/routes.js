@@ -28,8 +28,9 @@ const pool = new Pool({
 const insert_user = "INSERT INTO users (username, name, firstname, phone, email) VALUES ($1, $2, $3, $4, $5);";
 
 const get_users = "SELECT * FROM users";
-// const get_user_by_id = get_users + " WHERE id = $1";
 const get_user_by_username = get_users + " WHERE username = $1";
+
+const delete_user_by_username = "DELETE FROM users WHERE username = $1"
 
 // Health Check
 router.get("/hc", async (req,res) => {
@@ -85,6 +86,22 @@ router.post("/user", async (req,res) => {
   try {
     const user = await client.query(query);
     res.status(HTTP_CREATED).send(user);
+  } catch (error) {
+    res.send(error);
+  } finally {
+    client.release();
+  }
+});
+
+router.delete("/products/:username", async (req,res) => {
+  const client = await pool.connect();
+  const query = {
+    text: delete_user_by_username,
+    values: [ req.params.username ]
+  };
+  try {
+    await client.query(query);
+    res.status(HTTP_NO_CONTENT).send();
   } catch (error) {
     res.send(error);
   } finally {
