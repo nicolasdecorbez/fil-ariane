@@ -55,7 +55,7 @@ router.get("/users", async (req,res) => {
 router.get("/user/:username", async (req,res) => {
   const client = await pool.connect();
   const query = {
-    text: get_user_by_id,
+    text: get_user_by_username,
     values: [ req.params.username ]
   };
 
