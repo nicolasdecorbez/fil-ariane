@@ -8,5 +8,5 @@ CREATE TABLE users (
   prenom VARCHAR(100),
   email VARCHAR(255)
 );
-INSERT INTO users VALUES (1, 'decorbez', 'nicolas', 'decorbezpro@gmail.com');
+INSERT INTO users (nom, prenom, email) VALUES ('decorbez', 'nicolas', 'decorbezpro@gmail.com');
 EOSQL
