@@ -1,5 +1,5 @@
 const express = require("express");
-const Pool = require('pg').Pool
+const Pool = require("pg").Pool;
 
 // Creation de notre router
 const router = express.Router();
@@ -22,7 +22,10 @@ const pool = new Pool({
   database: DATABASE_NAME,
   password: DATABASE_PASSWORD,
   port: 5432,
-})
+});
+
+// Définition des queries
+const insert_user = "INSERT INTO users (username, name, firstname, phone, email) VALUES ($1, $2, $3, $4, $5);";
 
 // Health Check
 router.get("/hc", async (req,res) => {
@@ -34,14 +37,36 @@ router.get("/hc", async (req,res) => {
 });
 
 router.get("/users", async (req,res) => {
-  const client = await pool.connect()
+  const client = await pool.connect();
   try {
-    const users = await client.query('SELECT * FROM users');
+    const users = await client.query("SELECT * FROM users");
     res.status(HTTP_OK).send(users);
   } catch (error) {
     res.send(error);
   } finally {
-    client.release()
+    client.release();
+  }
+});
+
+router.post("/user", async (req,res) => {
+  const client = await pool.connect();
+  try {
+    const query = {
+      text: insert_user,
+      values: [
+        req.body.username,
+        req.body.name,
+        req.body.firstname,
+        req.body.phone,
+        req.body.email
+      ]
+    };
+    const user = await client.query(query);
+    res.status(HTTP_CREATED).send(user);
+  } catch (error) {
+    res.send(error);
+  } finally {
+    client.release();
   }
 });
 
