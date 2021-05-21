@@ -93,7 +93,7 @@ router.post("/user", async (req,res) => {
   }
 });
 
-router.delete("/products/:username", async (req,res) => {
+router.delete("/user/:username", async (req,res) => {
   const client = await pool.connect();
   const query = {
     text: delete_user_by_username,
