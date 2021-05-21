@@ -10,5 +10,5 @@ CREATE TABLE users (
   phone VARCHAR(10),
   email VARCHAR(255)
 );
-INSERT INTO users (nom, prenom, email) VALUES ('decorbez', 'nicolas', 'decorbezpro@gmail.com');
+INSERT INTO users (username, name, firstname, phone, email) VALUES ('decoconicoco', 'decorbez', 'nicolas', '0770581154', 'decorbezpro@gmail.com');
 EOSQL
