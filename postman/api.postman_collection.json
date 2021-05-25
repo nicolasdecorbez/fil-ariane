@@ -1,0 +1,164 @@
+{
+	"info": {
+		"_postman_id": "140862fb-d68b-4236-9b4d-e60e43e4f23f",
+		"name": "ARDIANE API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST new user",
+			"protocolProfileBehavior": {
+				"disableUrlEncoding": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "patita",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "potito",
+							"type": "text"
+						},
+						{
+							"key": "firstname",
+							"value": "pipapo",
+							"type": "text"
+						},
+						{
+							"key": "phone",
+							"value": "0608070806",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "titi@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "api.ardiane.local/user",
+					"host": [
+						"api",
+						"ardiane",
+						"local"
+					],
+					"path": [
+						"user"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "toto",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "titi",
+							"disabled": true
+						},
+						{
+							"key": "fname",
+							"value": "tata",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user BY username",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "api.ardiane.local/user/patita",
+					"host": [
+						"api",
+						"ardiane",
+						"local"
+					],
+					"path": [
+						"user",
+						"patita"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user BY username",
+			"protocolProfileBehavior": {
+				"disableUrlEncoding": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "api.ardiane.local/user/decoconicoco",
+					"host": [
+						"api",
+						"ardiane",
+						"local"
+					],
+					"path": [
+						"user",
+						"decoconicoco"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET users",
+			"protocolProfileBehavior": {
+				"disableUrlEncoding": false
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "api.ardiane.local/users",
+					"host": [
+						"api",
+						"ardiane",
+						"local"
+					],
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
