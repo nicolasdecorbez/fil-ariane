@@ -7,9 +7,9 @@ REBUILD TOTAL
 `ARDIANE API` -> app & dashboard
 - [ ] Users -> *to adjust*
   - [x] GET
-  - [ ] POST
+  - [x] POST
   - [ ] UPDATE
-  - [ ] DELETE
+  - [x] DELETE
 - [ ] Location (depends Users) -> *to create*
   - [ ] GET
   - [ ] POST
@@ -29,19 +29,18 @@ REBUILD TOTAL
 `TRAEFIK API` -> dashboard
 - [ ] routers
   - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
 - [ ] middlewares
   - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
 - [ ] services
   - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
+
+`CLOUD PROVIDER API` -> dashboard
+- [ ] instances
+  - [ ] GET
+- [ ] metrics
+  - [ ] GET
+- [ ] logging
+  - [ ] GET
 
 
 ## Liens
