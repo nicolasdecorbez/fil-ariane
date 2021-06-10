@@ -14,14 +14,7 @@ export default class UserController {
 
   // GET User by id
   public async getUserById(id: string): Promise<User | null> {
-    // check if 'id' is only digits.
-    const reg = new RegExp("/^[0-9]*$/")
-
-    if (reg.test(id)) {
-      return getUserById(Number(id))
-    } else {
-      return null
-    }
+    return getUserById(Number(id))
   }
 
   // POST new User
