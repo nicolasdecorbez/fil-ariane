@@ -14,8 +14,11 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const userController = new UserController()
   const response = await userController.getUserById(req.params.id)
-  if (!response) res.status(404).send({ message: "User " + req.params.id + " not found." })
-  return res.send(response)
+  if (!response) {
+    return res.status(404).send({ message: "User " + req.params.id + " not found." })
+  } else {
+    return res.send(response)
+  }
 })
 
 // POST new User

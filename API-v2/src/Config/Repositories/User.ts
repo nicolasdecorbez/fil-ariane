@@ -20,8 +20,11 @@ export const getUserById = async (id: number): Promise<User | null> => {
   const userRepository = getRepository(User)
   const user = await userRepository.findOne({ id: id })
 
-  if (!user) return null
-  return user
+  if (!user) {
+    return null
+  } else {
+    return user
+  }
 }
 
 // POST new User
