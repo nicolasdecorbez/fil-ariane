@@ -10,6 +10,9 @@ export class User {
   id!: number
 
   @Column()
+  username!:string
+
+  @Column()
   firstName!: string
 
   @Column()
@@ -17,4 +20,13 @@ export class User {
 
   @Column()
   email!: string
+
+  @Column()
+  phone!: string
+
+  @CreateDateColumn()
+  createdAt!: Date
+
+  @UpdateDateColumn()
+  updatedAt!: Date
 }
