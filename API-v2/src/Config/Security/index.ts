@@ -1,2 +1,2 @@
-import stringVerification from "./stringVerification"
-export { stringVerification }
+import StringVerification from "./stringVerification"
+export { StringVerification }
