@@ -2,20 +2,56 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/item2"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="@string/contact_menu"
+        app:showAsAction="ifRoom">
+        <menu
+            android:id="@+id/submenu_contact"
+            android:title="@string/contact_menu"
+            app:showAsAction="ifRoom">
+            <item
+                android:id="@+id/subitem_contact"
+                android:title="@string/contact_menu"
+                app:showAsAction="ifRoom" />
+
+        </menu>
+    </item>
+    <item
         android:id="@+id/item1"
         android:icon="@drawable/ic_baseline_menu_24"
         android:title="@string/options_menu"
         app:showAsAction="ifRoom">
         <menu
-            android:id="@+id/subitem1"
+            android:id="@+id/submenu_settings"
             android:title="@string/parameters_item"
             app:showAsAction="ifRoom">
             <item
-                android:id="@+id/subitem2"
+                android:id="@+id/subitem_param"
                 android:title="@string/parameters_item"
                 app:showAsAction="ifRoom" />
-
+            <item
+                android:id="@+id/subitem_rescue"
+                android:title="@string/rescue_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_profile"
+                android:title="@string/profile_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_update"
+                android:title="@string/update_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_alarm"
+                android:title="@string/alarm_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_notif"
+                android:title="@string/notif_item"
+                app:showAsAction="ifRoom" />
         </menu>
     </item>
+
 
 </menu>

@@ -9,8 +9,29 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
+
+    <!-- Menu & Settings Strings -->
+
     <string name="options_menu">Options</string>
-    <string name="parameters_item">Paramètres</string>
+    <string name="contact_menu">Contacts</string>
+    <string name="parameters_item">Settings</string>
+    <string name="rescue_item">Rescue Mode</string>
+    <string name="profile_item">My Profile</string>
+    <string name="update_item">Check for updates</string>
+    <string name="alarm_item">Alarm settings</string>
+    <string name="notif_item">Notification settings</string>
+
+    <!--Profile Info's Strings -->
+
+    <string name="user_name">Name</string>
+    <string name="user_firstname">Firstname</string>
+    <string name="user_phone">Phone</string>
+    <string name="user_bt">Blood type</string>
+    <string name="user_hid">Health insurance\'s Id</string>
+    <string name="save_profile">Save Changes</string>
+
+
+
     <string name="title_activity_home">HomeActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
