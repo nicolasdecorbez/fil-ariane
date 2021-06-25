@@ -1,6 +1,8 @@
 import { User } from "../Models"
 import {
   createUser,
+  deleteUserById,
+  deleteUserByUsername,
   getAllUsers,
   getUserById,
   getUserByUsername,
@@ -37,6 +39,14 @@ export default class UserController {
 
   // UPDATE User by username
   public async updateUserByUsername(username: string, body: UserSchema): Promise<User> {
-    return updateUserById(username, body)
+    return updateUserByUsername(username, body)
+  }
+
+  public async deleteUserById(id: string): Promise<User | null> {
+    return deleteUserById(Number(id))
+  }
+
+  public async deleteUserByUsername(username: string): Promise<User | null> {
+    return deleteUserByUsername(username)
   }
 }

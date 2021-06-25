@@ -65,3 +65,21 @@ export const updateUserByUsername = async (username: string, request: UserSchema
   userRepository.merge(user, request)
   return userRepository.save(user)
 }
+
+export const deleteUserById = async (id: number): Promise<User | null> => {
+  const userRepository = getRepository(User)
+  const user = await userRepository.delete({ id: id })
+  if (!user) {
+    return null
+  }
+  return user
+}
+
+export const deleteUserByUsername = async (username: string): Promise<User | null> => {
+  const userRepository = getRepository(User)
+  const user = await userRepository.delete({ username: username })
+  if (!user) {
+    return null
+  }
+  return user
+}

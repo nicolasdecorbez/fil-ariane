@@ -46,4 +46,17 @@ router.put("/:id", async (req, res) => {
   return res.status(200).send(response)
 })
 
+router.delete("/:id", async (req, res) => {
+  let response = null
+  if (verification.verifyIdRequest(req.params.id)) {
+    response = await userController.deleteUserById(req.params.id)
+  } else {
+    response = await userController.deleteUserByUsername(req.params.id)
+  }
+  if (!response) {
+    return res.status(404).send({ message: "User " + req.params.id + " not found." })
+  }
+  return res.status(200).send(response)
+})
+
 export default router
