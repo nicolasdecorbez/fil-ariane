@@ -1,4 +1,4 @@
-import { getRepository } from "typeorm"
+import { getRepository, DeleteResult } from "typeorm"
 import { User } from "../Models"
 
 // Payload definition for POST and PUT methods.
@@ -66,19 +66,19 @@ export const updateUserByUsername = async (username: string, request: UserSchema
   return userRepository.save(user)
 }
 
-export const deleteUserById = async (id: number): Promise<User | null> => {
+export const deleteUserById = async (id: number): Promise<DeleteResult | null> => {
   const userRepository = getRepository(User)
   const user = await userRepository.delete({ id: id })
-  if (!user) {
+  if (user.affected < 1) {
     return null
   }
   return user
 }
 
-export const deleteUserByUsername = async (username: string): Promise<User | null> => {
+export const deleteUserByUsername = async (username: string): Promise<DeleteResult | null> => {
   const userRepository = getRepository(User)
   const user = await userRepository.delete({ username: username })
-  if (!user) {
+  if (user.affected < 1) {
     return null
   }
   return user

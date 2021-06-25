@@ -1,3 +1,4 @@
+import { DeleteResult } from "typeorm"
 import { User } from "../Models"
 import {
   createUser,
@@ -42,11 +43,11 @@ export default class UserController {
     return updateUserByUsername(username, body)
   }
 
-  public async deleteUserById(id: string): Promise<User | null> {
+  public async deleteUserById(id: string): Promise<DeleteResult | null> {
     return deleteUserById(Number(id))
   }
 
-  public async deleteUserByUsername(username: string): Promise<User | null> {
+  public async deleteUserByUsername(username: string): Promise<DeleteResult | null> {
     return deleteUserByUsername(username)
   }
 }
