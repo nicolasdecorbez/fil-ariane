@@ -15,12 +15,14 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const userController = new UserController()
   const verification = new StringVerification()
+  let response = null
 
-  if (!verification.verifyIdRequest(req.params.id)) {
-    return res.status(400).send({ message: "Wrong parameter : " + req.params.id })
+  if (verification.verifyIdRequest(req.params.id) {
+    response = await userController.getUserById(req.params.id)
+  } else {
+    response = await userController.getUserByUsername(req.params.id)
   }
 
-  const response = await userController.getUserById(req.params.id)
   if (!response) {
     return res.status(404).send({ message: "User " + req.params.id + " not found." })
   } else {

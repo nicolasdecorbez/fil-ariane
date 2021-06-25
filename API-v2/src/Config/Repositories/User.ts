@@ -11,7 +11,6 @@ export interface UserSchema {
 // GET All Users
 export const getAllUsers = async (): Promise<Array<User>> => {
   const userRepository = getRepository(User)
-
   return userRepository.find()
 }
 
@@ -19,19 +18,25 @@ export const getAllUsers = async (): Promise<Array<User>> => {
 export const getUserById = async (id: number): Promise<User | null> => {
   const userRepository = getRepository(User)
   const user = await userRepository.findOne({ id: id })
-
   if (!user) {
     return null
-  } else {
-    return user
   }
+  return user
+}
+
+export const getUserByUsername = async (username: string): Promise<User | null> => {
+  const userRepository = getRepository(User)
+  const user = await userRepository.findOne({ username: username })
+  if (!user) {
+    return null
+  }
+  return user
 }
 
 // POST new User
 export const createUser = async (request: UserSchema): Promise<User> => {
   const userRepository = getRepository(User)
   const user = new User()
-
   return userRepository.save({
     ...user,
     ...request,
