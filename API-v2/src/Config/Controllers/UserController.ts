@@ -1,11 +1,12 @@
 import { User } from "../Models"
 import {
-  UserSchema,
+  createUser,
   getAllUsers,
   getUserById,
   getUserByUsername,
-  createUser,
-  updateUserById
+  updateUserById,
+  updateUserByUsername,
+  UserSchema
 } from "../Repositories/User"
 
 export default class UserController {
@@ -33,7 +34,9 @@ export default class UserController {
   public async updateUserById(id: string, body: UserSchema): Promise<User> {
     return updateUserById(Number(id), body)
   }
-  
-  // UPDATE User by username
 
+  // UPDATE User by username
+  public async updateUserByUsername(username: string, body: UserSchema): Promise<User> {
+    return updateUserById(username, body)
+  }
 }

@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
   return res.status(200).send(response)
 })
 
-// GET User by id
+// GET one User
 router.get("/:id", async (req, res) => {
   let response = null
   if (verification.verifyIdRequest(req.params.id)) {
@@ -32,17 +32,18 @@ router.post("/", async (req, res) => {
   return res.status(201).send(response)
 })
 
+// Update one User
 router.put("/:id", async (req, res) => {
   let response = null
   if (verification.verifyIdRequest(req.params.id)) {
-    response = await userController.updateUserById(req.params.id)
+    response = await userController.updateUserById(req.params.id, req.body)
   } else {
-    response = await userController.getUserByUsername(req.params.id)
+    response = await userController.updateUserByUsername(req.params.id, req.body)
   }
   if (!response) {
     return res.status(404).send({ message: "User " + req.params.id + " not found." })
   }
-  return res.send(response)
+  return res.status(200).send(response)
 })
 
 export default router

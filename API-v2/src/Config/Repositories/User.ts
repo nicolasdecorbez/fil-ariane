@@ -55,3 +55,13 @@ export const updateUserById = async (id: number, request: UserSchema): Promise<U
   userRepository.merge(user, request)
   return userRepository.save(user)
 }
+
+export const updateUserByUsername = async (username: string, request: UserSchema): Promise<User | null> => {
+  const userRepository = getRepository(User)
+  const user = await userRepository.findOne({ username: username })
+  if (!user) {
+    return null
+  }
+  userRepository.merge(user, request)
+  return userRepository.save(user)
+}
