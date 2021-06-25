@@ -17,7 +17,7 @@ router.get("/:id", async (req, res) => {
   const verification = new StringVerification()
   let response = null
 
-  if (verification.verifyIdRequest(req.params.id) {
+  if (verification.verifyIdRequest(req.params.id)) {
     response = await userController.getUserById(req.params.id)
   } else {
     response = await userController.getUserByUsername(req.params.id)

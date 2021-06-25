@@ -3,6 +3,7 @@ import {
   UserSchema,
   getAllUsers,
   getUserById,
+  getUserByUsername,
   createUser
 } from "../Repositories/User"
 
@@ -15,6 +16,10 @@ export default class UserController {
   // GET User by id
   public async getUserById(id: string): Promise<User | null> {
     return getUserById(Number(id))
+  }
+
+  public async getUserByUsername(username: string): Promise<User | null> {
+    return getUserByUsername(username)
   }
 
   // POST new User
