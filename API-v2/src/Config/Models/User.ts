@@ -1,12 +1,14 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
+  PrimaryGeneratedColumn,
+  Unique,
   UpdateDateColumn
 } from "typeorm"
 
 @Entity()
+@Unique(["username", "email", "phone"])
 export class User {
   @PrimaryGeneratedColumn()
   id!: number

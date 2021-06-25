@@ -4,7 +4,8 @@ import {
   getAllUsers,
   getUserById,
   getUserByUsername,
-  createUser
+  createUser,
+  updateUserById
 } from "../Repositories/User"
 
 export default class UserController {
@@ -18,6 +19,7 @@ export default class UserController {
     return getUserById(Number(id))
   }
 
+  // GET User by username
   public async getUserByUsername(username: string): Promise<User | null> {
     return getUserByUsername(username)
   }
@@ -26,4 +28,12 @@ export default class UserController {
   public async createUser(body: UserSchema): Promise<User> {
     return createUser(body)
   }
+
+  // UPDATE User by id
+  public async updateUserById(id: string, body: UserSchema): Promise<User> {
+    return updateUserById(Number(id), body)
+  }
+  
+  // UPDATE User by username
+
 }
