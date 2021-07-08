@@ -2,15 +2,13 @@ import { DeleteResult } from "typeorm"
 import { User } from "../Models"
 import {
   createUser,
-  deleteUserById,
-  deleteUserByUsername,
+  deleteOneUser,
+  getOneUser,
   getAllUsers,
-  getUserById,
-  getUserByUsername,
-  updateUserById,
-  updateUserByUsername,
+  updateOneUser,
   UserSchema
 } from "../Repositories/User"
+import { StringVerification } from "../Security"
 
 export default class UserController {
   // GET All Users
@@ -18,36 +16,25 @@ export default class UserController {
     return getAllUsers()
   }
 
-  // GET User by id
-  public async getUserById(id: string): Promise<User | null> {
-    return getUserById(Number(id))
-  }
-
-  // GET User by username
-  public async getUserByUsername(username: string): Promise<User | null> {
-    return getUserByUsername(username)
-  }
-
   // POST new User
   public async createUser(body: UserSchema): Promise<User> {
     return createUser(body)
   }
 
-  // UPDATE User by id
-  public async updateUserById(id: string, body: UserSchema): Promise<User> {
-    return updateUserById(Number(id), body)
+  // GET One User
+  public async getOneUser(request: string): Promise<User | null> {
+    const verification = new StringVerification()
+    return getOneUser(request, verification.verifyIdRequest(request))
   }
 
-  // UPDATE User by username
-  public async updateUserByUsername(username: string, body: UserSchema): Promise<User> {
-    return updateUserByUsername(username, body)
+  // UPDATE One User
+  public async updateOneUser(request: string, body: UserSchema): Promise<User | null> {
+    const verification = new StringVerification()
+    return updateOneUser(request, body, verification.verifyIdRequest(request))
   }
 
-  public async deleteUserById(id: string): Promise<DeleteResult | null> {
-    return deleteUserById(Number(id))
-  }
-
-  public async deleteUserByUsername(username: string): Promise<DeleteResult | null> {
-    return deleteUserByUsername(username)
+  public async deleteOneUser(request: string): Promise<User | null> {
+    const verification = new StringVerification()
+    return deleteOneUser(request, verification.verifyIdRequest(request))
   }
 }

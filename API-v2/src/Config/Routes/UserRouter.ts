@@ -1,28 +1,12 @@
 import express from "express"
 import UserController from "../Controllers/UserController"
-import { StringVerification } from "../Security"
 
 const router = express.Router()
 const userController = new UserController()
-const verification = new StringVerification()
 
 // GET All Users
 router.get("/", async (req, res) => {
   const response = await userController.getAllUsers()
-  return res.status(200).send(response)
-})
-
-// GET one User
-router.get("/:id", async (req, res) => {
-  let response = null
-  if (verification.verifyIdRequest(req.params.id)) {
-    response = await userController.getUserById(req.params.id)
-  } else {
-    response = await userController.getUserByUsername(req.params.id)
-  }
-  if (!response) {
-    return res.status(404).send({ message: "User " + req.params.id + " not found." })
-  }
   return res.status(200).send(response)
 })
 
@@ -32,29 +16,28 @@ router.post("/", async (req, res) => {
   return res.status(201).send(response)
 })
 
-// Update one User
-router.put("/:id", async (req, res) => {
-  let response = null
-  if (verification.verifyIdRequest(req.params.id)) {
-    response = await userController.updateUserById(req.params.id, req.body)
-  } else {
-    response = await userController.updateUserByUsername(req.params.id, req.body)
-  }
+// GET One User
+router.get("/:user", async (req, res) => {
+  const response = await userController.getOneUser(req.params.user)
   if (!response) {
-    return res.status(404).send({ message: "User " + req.params.id + " not found." })
+    return res.status(404).send({ message: "User " + req.params.user + " not found." })
   }
   return res.status(200).send(response)
 })
 
-router.delete("/:id", async (req, res) => {
-  let response = null
-  if (verification.verifyIdRequest(req.params.id)) {
-    response = await userController.deleteUserById(req.params.id)
-  } else {
-    response = await userController.deleteUserByUsername(req.params.id)
-  }
+// Update one User
+router.put("/:user", async (req, res) => {
+  const response = await userController.updateOneUser(req.params.user, req.body)
   if (!response) {
-    return res.status(404).send({ message: "User " + req.params.id + " not found." })
+    return res.status(404).send({ message: "User " + req.params.user + " not found." })
+  }
+  return res.status(200).send(response)
+})
+
+router.delete("/:user", async (req, res) => {
+  const response = await userController.deleteOneUser(req.params.user)
+  if (!response) {
+    return res.status(404).send({ message: "User " + req.params.user + " not found." })
   }
   return res.status(200).send(response)
 })
