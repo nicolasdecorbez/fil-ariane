@@ -12,8 +12,12 @@ router.get("/", async (req, res) => {
 
 // POST new User
 router.post("/", async (req, res) => {
-  const response = await userController.createUser(req.body)
-  return res.status(201).send(response)
+  try {
+    const response = await userController.createUser(req.body)
+    return res.status(201).send(response)
+  } catch (error) {
+    return res.status(418).send(error)
+  }
 })
 
 // GET One User
