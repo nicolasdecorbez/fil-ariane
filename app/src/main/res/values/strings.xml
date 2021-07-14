@@ -31,10 +31,14 @@
     <string name="save_profile">Save Changes</string>
 
 
-
     <string name="title_activity_home">HomeActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Mock Strings for ToneList -->
+
+    <string name="tone_item_1">Metallica--Through the Never</string>
+
 </resources>

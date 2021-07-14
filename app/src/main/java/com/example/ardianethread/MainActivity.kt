@@ -22,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         var adapter = FragmentAdapter(supportFragmentManager,lifecycle)
 
         pager2.adapter= adapter
-
         tabLayout.addTab(tabLayout.newTab().setText("Ariane"))
         tabLayout.addTab(tabLayout.newTab().setText("Theseus"))
 
@@ -51,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.subitem_profile -> {
                 val intent = Intent(this,ProfileActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_alarm -> {
+                val intent = Intent(this,AlarmActivity::class.java)
                 startActivity(intent)
                 true
             }
