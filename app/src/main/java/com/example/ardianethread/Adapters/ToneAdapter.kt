@@ -1,4 +1,4 @@
-package com.example.ardianethread.ui.main
+package com.example.ardianethread.Adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,19 +6,19 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ardianethread.R
-import com.example.ardianethread.Tones
+import com.example.ardianethread.Data.Tones
 
 class ToneAdapter(private val toneList: ArrayList<Tones>):
     RecyclerView.Adapter<ToneAdapter.ToneViewHolder>() {
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToneAdapter.ToneViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ToneViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tone_item, parent,false)
         return ToneViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(holder: ToneAdapter.ToneViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ToneViewHolder, position: Int) {
         val currentTone = toneList[position]
         holder.toneTile.text = currentTone.title
     }

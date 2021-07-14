@@ -1,15 +1,14 @@
-package com.example.ardianethread
+package com.example.ardianethread.Activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.Toolbar
 import androidx.viewpager2.widget.ViewPager2
+import com.example.ardianethread.Adapters.FragmentAdapter
+import com.example.ardianethread.R
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
@@ -49,12 +48,17 @@ class MainActivity : AppCompatActivity() {
         // Handle item selection
         return when (item.itemId) {
             R.id.subitem_profile -> {
-                val intent = Intent(this,ProfileActivity::class.java)
+                val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
                 true
             }
             R.id.subitem_alarm -> {
-                val intent = Intent(this,AlarmActivity::class.java)
+                val intent = Intent(this, AlarmActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_notif -> {
+                val intent = Intent(this, NotificationActivity::class.java)
                 startActivity(intent)
                 true
             }

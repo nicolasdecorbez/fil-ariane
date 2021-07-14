@@ -1,18 +1,19 @@
-package com.example.ardianethread
+package com.example.ardianethread.Activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
-import android.view.View
+import android.view.MenuItem
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.Switch
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ardianethread.ui.main.ToneAdapter
+import com.example.ardianethread.Data.Tones
+import com.example.ardianethread.R
+import com.example.ardianethread.Adapters.ToneAdapter
 
 class AlarmActivity : AppCompatActivity() {
 
@@ -57,8 +58,6 @@ class AlarmActivity : AppCompatActivity() {
                 switch_button.text = "Vibrate Mode"
             }
         }
-        switch_button.textOff = "Vibrate Mode"
-        switch_button.textOn =" Ring Mode"
 
         //POPULATE TONE VIEW//
 
@@ -79,6 +78,28 @@ class AlarmActivity : AppCompatActivity() {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.top_menu,menu)
         return true;
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.subitem_profile -> {
+                val intent = Intent(this, ProfileActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_alarm -> {
+                val intent = Intent(this, AlarmActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_notif -> {
+                val intent = Intent(this, NotificationActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun getTonesData(){

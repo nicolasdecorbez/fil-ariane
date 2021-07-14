@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlarmActivity">
+    tools:context=".Activities.AlarmActivity">
 
 
 
@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/fragment"
-        android:name="com.example.ardianethread.Alarm"
+        android:name="com.example.ardianethread.Activities.Alarm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/aToolbar"
