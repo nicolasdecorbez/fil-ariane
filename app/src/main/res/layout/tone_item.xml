@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="@string/tone_item_1"
+        android:fontFamily="@font/autour_one"
+        android:textColor="#EED082"
         tools:layout_editor_absoluteX="211dp"
         tools:layout_editor_absoluteY="61dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

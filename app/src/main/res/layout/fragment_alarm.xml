@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".Activities.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -46,6 +46,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="150dp"
+        android:fontFamily="@font/autour_one"
+        android:textColor="#EED082"
         android:text="Ring Mode"
         android:checked="true" />
 
@@ -64,6 +66,7 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
+
 
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
