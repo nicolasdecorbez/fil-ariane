@@ -8,7 +8,9 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        setSupportActionBar(findViewById(R.id.aToolbar))
         title = ""
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

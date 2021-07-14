@@ -1,3 +1,4 @@
 package com.example.ardianethread
 
-data class Tones()
+//TO DO : MAKE THIS DATA PLAYABLE
+data class Tones(var title : String)
