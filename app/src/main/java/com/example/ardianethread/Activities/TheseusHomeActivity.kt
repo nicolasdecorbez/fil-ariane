@@ -3,49 +3,27 @@ package com.example.ardianethread.Activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Switch
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.example.ardianethread.Globals.Global
 import com.example.ardianethread.R
 
-class NotificationActivity : AppCompatActivity() {
+class TheseusHomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_notification)
+        setContentView(R.layout.activity_theseus__home)
 
         setSupportActionBar(findViewById(R.id.aToolbar))
         title = ""
 
-        var switch_button__message = findViewById<Switch>(R.id.switch_notif_message)
+        val username = findViewById<TextView>(R.id.theseus_user)
+        username.text = Global.Current.User.firstname
 
-        switch_button__message.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked){
-                switch_button__message.text = resources.getString(R.string.notif_message_on)
-            } else {
-                switch_button__message.text = resources.getString(R.string.notif_message_off)
-            }
-        }
-
-        var switch_button_update = findViewById<Switch>(R.id.switch_notif_update)
-
-        switch_button_update.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked){
-                switch_button_update.text = resources.getString(R.string.notif_update_on)
-            } else {
-                switch_button_update.text = resources.getString(R.string.notif_update_off)
-            }
-        }
-
-        var switch_button_friend = findViewById<Switch>(R.id.switch_notif_friend)
-
-        switch_button_friend.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked){
-                switch_button_friend.text = resources.getString(R.string.notif_friend_on)
-            } else {
-                switch_button_friend.text = resources.getString(R.string.notif_friend_on)
-            }
-        }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.top_menu,menu)
@@ -78,4 +56,7 @@ class NotificationActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
+
+
+
 }

@@ -1,0 +1,85 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/container"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingLeft="@dimen/fragment_horizontal_margin"
+android:paddingTop="@dimen/fragment_vertical_margin"
+android:paddingRight="@dimen/fragment_horizontal_margin"
+android:paddingBottom="@dimen/fragment_vertical_margin"
+tools:context=".Activities.fragment_login">
+
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="448dp"
+    android:layout_height="82dp"
+    android:layout_marginTop="84dp"
+    android:fontFamily="@font/autour_one"
+    android:gravity="center_horizontal"
+    android:text="LOGIN"
+    android:textAlignment="center"
+    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    android:textColor="#FFFFFF"
+    android:textSize="60dp"
+    app:autoSizeTextType="none"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints" />
+
+<EditText
+    android:id="@+id/username"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="24dp"
+    android:layout_marginTop="220dp"
+    android:layout_marginEnd="24dp"
+    android:fontFamily="@font/autour_one"
+    android:hint="Phone Number or username"
+    android:inputType="text"
+    android:digits="0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+    android:selectAllOnFocus="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<EditText
+    android:id="@+id/password"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="24dp"
+    android:layout_marginTop="28dp"
+    android:layout_marginEnd="24dp"
+    android:fontFamily="@font/autour_one"
+    android:hint="@string/prompt_password"
+    android:imeActionLabel="@string/action_sign_in_short"
+    android:imeOptions="actionDone"
+    android:inputType="textPassword"
+    android:selectAllOnFocus="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="1.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/username" />
+
+<Button
+    android:id="@+id/login"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:layout_marginStart="48dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="48dp"
+    android:layout_marginBottom="64dp"
+    android:enabled="false"
+    android:fontFamily="@font/autour_one"
+    android:text="Connect"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/password"
+    app:layout_constraintVertical_bias="0.167" />
+
+
+</RelativeLayout>

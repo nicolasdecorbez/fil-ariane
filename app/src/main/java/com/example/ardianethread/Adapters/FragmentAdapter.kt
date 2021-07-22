@@ -17,6 +17,7 @@ class FragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) :
         when(position) {
             1->return(fragment_theseus.newInstance())
 
+
         }
         return fragment_ariane.newInstance()
     }

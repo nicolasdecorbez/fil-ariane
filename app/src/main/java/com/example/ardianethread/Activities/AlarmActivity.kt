@@ -83,6 +83,11 @@ class AlarmActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle item selection
         return when (item.itemId) {
+            R.id.home_button -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_profile -> {
                 val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
