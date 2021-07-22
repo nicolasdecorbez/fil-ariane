@@ -1,10 +1,12 @@
 package com.example.ardianethread.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.example.ardianethread.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,5 +54,13 @@ class fragment_ariane : Fragment() {
 
                 }
             }
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val theseus_image = view.findViewById<ImageView>(R.id.my_image_view)
+        theseus_image.setOnClickListener {
+            val intent = Intent(activity, ArdianeHomeActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

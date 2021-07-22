@@ -39,14 +39,23 @@
 
     <!-- Notification Switch Buttons Strings -->
 
-    <string name ="notif_message_on">Messages Notifications: ON</string>
-    <string name ="notif_message_off">Messages Notifications: OFF</string>
-    <string name ="notif_update_on">Updates Notifications: ON</string>
-    <string name ="notif_update_off">Updates Notifications: OFF</string>
-    <string name ="notif_friend_on">Friend Requests Notifications: ON</string>
-    <string name ="notif_friend_off">Friend Requests Notifications: OFF</string>
+    <string name="notif_message_on">Messages Notifications: ON</string>
+    <string name="notif_message_off">Messages Notifications: OFF</string>
+    <string name="notif_update_on">Updates Notifications: ON</string>
+    <string name="notif_update_off">Updates Notifications: OFF</string>
+    <string name="notif_friend_on">Friend Requests Notifications: ON</string>
+    <string name="notif_friend_off">Friend Requests Notifications: OFF</string>
     <!-- Mock Strings for ToneList -->
 
     <string name="tone_item_1">Metallica--Through the Never</string>
 
+    <!-- Activities Titles -->
+    <string name="theseus_title">Theseus Mode</string>
+    <string name="ardiane_title">Ardiane Mode</string>
+
+    <!-- Various Dialogs Theseus -->
+    <string name="ready_theseus">Ready for your journey, </string>
+
+    <!-- Various Dialogs Ardiane -->
+    <string name="home_ardiane">Please keep watching us,</string>
 </resources>
