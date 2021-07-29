@@ -1,2 +1,3 @@
 import { User } from "./User"
-export { User }
+import { Message } from "./Message"
+export { User, Message }

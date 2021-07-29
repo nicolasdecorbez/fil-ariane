@@ -3,31 +3,45 @@ import {
   Column,
   CreateDateColumn,
   PrimaryGeneratedColumn,
-  Unique,
   UpdateDateColumn
 } from "typeorm"
 
 @Entity()
-@Unique(["username"])
-@Unique(["email"])
-@Unique(["phone"])
 export class User {
   @PrimaryGeneratedColumn()
   id!: number
 
-  @Column()
+  @Column({
+      type: "varchar",
+      length: "100",
+      unique: true
+  })
   username!:string
 
-  @Column()
+  @Column({
+      type: "varchar",
+      length: "50"
+  })
   firstName!: string
 
-  @Column()
+  @Column({
+      type: "varchar",
+      length: "50"
+  })
   lastName!: string
 
-  @Column()
+  @Column({
+      type: "varchar",
+      length: "100",
+      unique: true,
+  })
   email!: string
 
-  @Column()
+  @Column({
+      type: "varchar",
+      length: "10",
+      unique: true,
+  })
   phone!: string
 
   @CreateDateColumn()
