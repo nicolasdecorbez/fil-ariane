@@ -1,4 +1,4 @@
-import { getRepository, DeleteResult } from "typeorm"
+import { getRepository } from "typeorm"
 import { User } from "../Models"
 
 // Payload definition for POST and PUT methods.
