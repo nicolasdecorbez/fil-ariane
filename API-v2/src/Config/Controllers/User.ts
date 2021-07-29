@@ -1,4 +1,3 @@
-import { DeleteResult } from "typeorm"
 import { User } from "../Models"
 import {
   createUser,
@@ -10,7 +9,7 @@ import {
 } from "../Repositories/User"
 import { StringVerification } from "../Security"
 
-export default class UserController {
+export class UserController {
   // GET All Users
   public async getAllUsers(): Promise<Array<User>> {
     return getAllUsers()
