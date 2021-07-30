@@ -1,5 +1,5 @@
 import { getRepository } from "typeorm"
-import { User } from "../Models"
+import { UserModel } from "../Models"
 
 // Payload definition for POST and PUT methods.
 export interface UserSchema {
@@ -11,15 +11,15 @@ export interface UserSchema {
 }
 
 // GET All Users
-export const getAllUsers = async (): Promise<Array<User>> => {
-  const userRepository = getRepository(User)
+export const getAllUsers = async (): Promise<Array<UserModel>> => {
+  const userRepository = getRepository(UserModel)
   return userRepository.find()
 }
 
 // POST new User
-export const createUser = async (request: UserSchema): Promise<User> => {
-  const userRepository = getRepository(User)
-  const user = new User()
+export const createUser = async (request: UserSchema): Promise<UserModel> => {
+  const userRepository = getRepository(UserModel)
+  const user = new UserModel()
   return userRepository.save({
     ...user,
     ...request,
@@ -29,9 +29,9 @@ export const createUser = async (request: UserSchema): Promise<User> => {
 export const getOneUser = async (
   request: string,
   isIdRequest: boolean
-): Promise<User | null> => {
+): Promise<UserModel | null> => {
 
-  const userRepository = getRepository(User)
+  const userRepository = getRepository(UserModel)
   let user = null
   if (isIdRequest)
     user = await userRepository.findOne({ id: Number(request) })
@@ -45,9 +45,9 @@ export const updateOneUser = async (
   request: string,
   data: UserSchema,
   isIdRequest: boolean
-): Promise<User | null> => {
+): Promise<UserModel | null> => {
 
-  const userRepository = getRepository(User)
+  const userRepository = getRepository(UserModel)
   let user = null
   if (isIdRequest)
     user = await userRepository.findOne({ id: Number(request) })
@@ -65,9 +65,9 @@ export const updateOneUser = async (
 export const deleteOneUser = async (
   request: string,
   isIdRequest: boolean
-): Promise<User | null> => {
+): Promise<UserModel | null> => {
 
-  const userRepository = getRepository(User)
+  const userRepository = getRepository(UserModel)
   let user = null
   if (isIdRequest)
     user = await userRepository.delete({ id: Number(request) })
