@@ -1,4 +1,4 @@
-import { Message } from "../Models"
+import { MessageModel } from "../Models"
 import {
   createMessage,
   getAllMessages,
@@ -7,12 +7,12 @@ import {
 
 export class MessageController {
   // GET All Users
-  public async getAllMessages(): Promise<Array<Message>> {
+  public async retrive_all(): Promise<Array<MessageModel>> {
     return getAllMessages()
   }
 
   // POST new User
-  public async createMessage(body: MessageSchema): Promise<Message> {
+  public async create(body: MessageSchema): Promise<MessageModel> {
     return createMessage(body)
   }
 }
