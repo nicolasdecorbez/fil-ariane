@@ -11,28 +11,28 @@ import { StringVerification } from "../Security"
 
 export class UserController {
   // GET All Users
-  public async getAllUsers(): Promise<Array<User>> {
+  public async retrive_all(): Promise<Array<UserModel>> {
     return getAllUsers()
   }
 
   // POST new User
-  public async createUser(body: UserSchema): Promise<User> {
+  public async create(body: UserSchema): Promise<UserModel> {
     return createUser(body)
   }
 
   // GET One User
-  public async getOneUser(request: string): Promise<User | null> {
+  public async retrive_one(request: string): Promise<UserModel | null> {
     const verification = new StringVerification()
     return getOneUser(request, verification.verifyIdRequest(request))
   }
 
   // UPDATE One User
-  public async updateOneUser(request: string, body: UserSchema): Promise<User | null> {
+  public async update_one(request: string, body: UserSchema): Promise<UserModel | null> {
     const verification = new StringVerification()
     return updateOneUser(request, body, verification.verifyIdRequest(request))
   }
 
-  public async deleteOneUser(request: string): Promise<User | null> {
+  public async delete_one(request: string): Promise<UserModel | null> {
     const verification = new StringVerification()
     return deleteOneUser(request, verification.verifyIdRequest(request))
   }
