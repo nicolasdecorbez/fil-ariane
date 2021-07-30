@@ -1,3 +1,3 @@
-import { UserController } from "./User"
-import { MessageController } from "./Message"
+import { UserController } from "./UserController"
+import { MessageController } from "./MessageController"
 export { UserController, MessageController }

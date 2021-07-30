@@ -3,7 +3,7 @@ import {
   createMessage,
   getAllMessages,
   MessageSchema
-} from "../Repositories/Message"
+} from "../Repositories/MessageRepo"
 
 export class MessageController {
   // GET All Users

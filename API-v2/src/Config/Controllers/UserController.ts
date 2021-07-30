@@ -1,4 +1,4 @@
-import { User } from "../Models"
+import { UserModel } from "../Models"
 import {
   createUser,
   deleteOneUser,
@@ -6,7 +6,7 @@ import {
   getAllUsers,
   updateOneUser,
   UserSchema
-} from "../Repositories/User"
+} from "../Repositories/UserRepo"
 import { StringVerification } from "../Security"
 
 export class UserController {
