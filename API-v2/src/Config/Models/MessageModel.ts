@@ -6,8 +6,8 @@ import {
   UpdateDateColumn
 } from "typeorm"
 
-@Entity()
-export class Message {
+@Entity("messages")
+export class MessageModel {
   @PrimaryGeneratedColumn()
   id!: number
 
