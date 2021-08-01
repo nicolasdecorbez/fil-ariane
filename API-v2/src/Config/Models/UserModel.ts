@@ -6,6 +6,10 @@ import {
   UpdateDateColumn
 } from "typeorm"
 
+
+/**
+ *  [Entity to describe Users in database]
+ */
 @Entity("users")
 export class UserModel {
   @PrimaryGeneratedColumn()
