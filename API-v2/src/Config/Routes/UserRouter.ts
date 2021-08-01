@@ -4,13 +4,20 @@ import { UserController } from "../Controllers"
 const router = express.Router()
 const userController = new UserController()
 
-// GET All Users
-router.get("/", async (req, res) => {
+/**
+ *  [GET all users async route]
+ *  @// TODO:  [add try/catch methods]
+ *  @return                [status + response]
+ */
+router.get("/", async (_req, res) => {
   const response = await userController.retrive_all()
   return res.status(200).send(response)
 })
 
-// POST new User
+/**
+ *  [POST new user async route]
+ *  @return               [status + response]
+ */
 router.post("/", async (req, res) => {
   try {
     const response = await userController.create(req.body)
@@ -20,7 +27,11 @@ router.post("/", async (req, res) => {
   }
 })
 
-// GET One User
+/**
+ *  [GET one user by id or username async route]
+ *  @// TODO:  [add try/catch methods]
+ *  @return               [status + response]
+ */
 router.get("/:user", async (req, res) => {
   const response = await userController.retrive_one(req.params.user)
   if (!response) {
@@ -29,7 +40,11 @@ router.get("/:user", async (req, res) => {
   return res.status(200).send(response)
 })
 
-// Update one User
+/**
+ *  [PUT one user by id or username async route]
+ *  @// TODO:  [add try/catch methods]
+ *  @return               [status + response]
+ */
 router.put("/:user", async (req, res) => {
   const response = await userController.update_one(req.params.user, req.body)
   if (!response) {
@@ -38,6 +53,11 @@ router.put("/:user", async (req, res) => {
   return res.status(200).send(response)
 })
 
+/**
+ *  [DELETE one user by id or username async route]
+ *  @// TODO:  [add try/catch methods]
+ *  @return               [status + response]
+ */
 router.delete("/:user", async (req, res) => {
   const response = await userController.delete_one(req.params.user)
   if (!response) {
