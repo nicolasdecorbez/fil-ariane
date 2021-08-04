@@ -1,56 +1,63 @@
 package com.example.ardianethread.Activities
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Button
-import android.widget.EditText
-import android.widget.RelativeLayout
-import androidx.core.view.get
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.ardianethread.Adapters.FriendAdapter
+import com.example.ardianethread.Adapters.ToneAdapter
+import com.example.ardianethread.Data.Tones
 import com.example.ardianethread.Data.Users
-import com.example.ardianethread.Globals.Global
 import com.example.ardianethread.R
 
-class RegisterActivity : AppCompatActivity() {
+class FriendActivity : AppCompatActivity() {
+
+    private lateinit var friendView: RecyclerView
+    private lateinit var friendList: ArrayList<Users>
+    lateinit var friendName : Array<String>
+    lateinit var friendNumber : Array<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register)
+        setContentView(R.layout.activity_friend)
+        setSupportActionBar(findViewById(R.id.aToolbar))
+        title = ""
 
-        var name_field : EditText = findViewById(R.id.editTextPersonName)
-        var firstname_field : EditText = findViewById(R.id.editTextPersonName2)
-        var phone_field : EditText = findViewById(R.id.editTextPhone)
-        var email_field : EditText = findViewById(R.id.editTextEmailAddress)
-        var submit_button : Button = findViewById<Button>(R.id.register_button)
+        friendView= findViewById<RecyclerView>(R.id.friend_view)
+        friendView.layoutManager = LinearLayoutManager(this)
+        friendView.setHasFixedSize(true)
+
+        friendName = arrayOf(
+            "Nico",
+            "Kevin",
+            "Lucas"
+        )
+
+        friendNumber = arrayOf(
+            "06.00.00.00.01",
+            "06.00.00.00.02",
+            "06.00.00.00.03"
+        )
+
+        friendList = arrayListOf<Users>()
+        getFriendData()
+
+        friendView.adapter = FriendAdapter(friendList)
+
+        var add_friend_button : Button = findViewById(R.id.add_friend_button)
         val fragmentManager = supportFragmentManager
         val transaction = fragmentManager.beginTransaction()
 
-        var isLoaded = false
-
-        submit_button.setOnClickListener {
-            val user = Users(
-                name = name_field.text.toString(),
-                firstname = firstname_field.text.toString(),
-                phone = phone_field.text.toString(),
-                email = email_field.text.toString(),
-                blood_type = R.string.user_bt.toString(),
-                hid = R.string.user_hid.toString(),
-            )
-            Global.Current.User = user
-            Global.Current.isDefined = true
-
-
+        add_friend_button.setOnClickListener{
             transaction.setReorderingAllowed(true)
-            transaction.replace(R.id.register_container, fragment_more_register())
-            transaction.commitNow()
-            isLoaded = true
+            transaction.replace(R.id.friend_layout, fragment_friend_add())
+            transaction.commit()
         }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -87,6 +94,11 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_notif -> {
                 val intent = Intent(this, NotificationActivity::class.java)
                 startActivity(intent)
@@ -95,5 +107,17 @@ class RegisterActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
+    private fun getFriendData() {
+        for (i in friendName.indices) {
+            val friend = Users(
+                name = "unknown",
+                firstname = friendName[i],
+                phone = friendNumber[i],
+                email = "unknown",
+                blood_type = "unknown",
+                hid = "unknown",
+            )
+            friendList.add(friend)
+        }
+    }
 }

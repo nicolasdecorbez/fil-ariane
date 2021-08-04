@@ -4,19 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/fragment_theseus_home"
+
     tools:context=".Activities.TheseusHomeActivity">
+
+    <RelativeLayout
+        android:id="@+id/theseus_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/aToolbar"
+        android:layout_centerInParent="true">
+
+        <include
+            android:id="@+id/theseus_frag"
+            layout="@layout/fragment_theseus_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF" />
+    </RelativeLayout>
 
     <include
         android:id="@+id/aToolbar"
         layout="@layout/toolbar"/>
-
-    <include
-        android:id="@+id/theseus_frag"
-        layout="@layout/fragment_theseus_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/aToolbar"
-        android:layout_centerHorizontal="true"
-        android:background="#FFFFFF" />
 
 </RelativeLayout>

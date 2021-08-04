@@ -2,14 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/friend_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.fragment_theseus_home"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".Activities.fragment_friend_home">
 
     <!-- TODO: Update blank fragment layout -->
-
-
     <View
         android:layout_width="150dp"
         android:layout_height="3dp"
@@ -29,47 +28,55 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/autour_one"
-        android:text="@string/theseus_title"
+        android:linksClickable="false"
+        android:text="@string/friend_add"
         android:textColor="#EED082"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         tools:ignore="MissingConstraints" />
 
+
     <TextView
-        android:id="@+id/theseus_ready"
+        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
         android:fontFamily="@font/autour_one"
-        android:text="@string/ready_theseus"
-        android:textColor="#EED082" />
+        android:textColor="#EED082"
+        android:textSize="20sp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/user_phone" />
 
-    <TextView
-        android:id="@+id/theseus_user"
+    <EditText
+        android:id="@+id/editTextPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/theseus_ready"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView2"
+        android:layout_alignParentRight="true"
+        android:ems="10"
         android:fontFamily="@font/autour_one"
-        android:text=""
-        android:textColor="#EED082" />
+        android:gravity="center_horizontal"
+        android:inputType="phone"
+        android:textColor="#EED082"
+        android:textSize="20sp" />
 
     <Button
-        android:id="@+id/start_Button"
+        android:id="@+id/friend_request_button"
         style="?attr/materialButtonOutlinedStyle"
+        app:strokeColor="#EED082"
+        android:textColor="#EED082"
+        android:fontFamily="@font/autour_one"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/theseus_user"
+        android:layout_below="@id/editTextPhone"
         android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:text="Start new journey"
-        android:textColor="#EED082"
-        app:strokeColor="#EED082" />
+        android:text="Send Request" />
+
 
 
 </RelativeLayout>

@@ -20,7 +20,7 @@ class ToneAdapter(private val toneList: ArrayList<Tones>):
 
     override fun onBindViewHolder(holder: ToneViewHolder, position: Int) {
         val currentTone = toneList[position]
-        holder.toneTile.text = currentTone.title
+        holder.toneTitle.text = currentTone.title
     }
 
     override fun getItemCount(): Int {
@@ -29,6 +29,6 @@ class ToneAdapter(private val toneList: ArrayList<Tones>):
 
     class ToneViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val toneTile : TextView = itemView.findViewById(R.id.tone_title)
+        val toneTitle : TextView = itemView.findViewById(R.id.tone_title)
     }
 }
