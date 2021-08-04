@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Activities.fragment_register"
     android:id="@+id/register_container">
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="448dp"

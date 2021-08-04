@@ -40,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         //SET TOOLBAR
         setSupportActionBar(findViewById(R.id.aToolbar))
         title = ""
-        //SET ON CLICK IMAGES
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

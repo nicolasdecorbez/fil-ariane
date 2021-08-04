@@ -1,6 +1,5 @@
 package com.example.ardianethread.Activities
 
-
 import android.app.Activity
 import androidx.fragment.app.Fragment
 
@@ -18,20 +17,19 @@ import com.example.ardianethread.R
 
 
 
-
 class fragment_theseus_home : Fragment() {
-
-
+  
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
+
         val v = inflater.inflate(R.layout.fragment_theseus_home, container, false)
-
-
-
         return v
     }
 
@@ -42,7 +40,4 @@ class fragment_theseus_home : Fragment() {
             username.text = Global.Current.User.firstname
         }
     }
-
-
-
 }

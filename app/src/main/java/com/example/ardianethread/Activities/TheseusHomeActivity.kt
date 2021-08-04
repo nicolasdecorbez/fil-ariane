@@ -1,5 +1,6 @@
 package com.example.ardianethread.Activities
 
+
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -79,5 +80,4 @@ class TheseusHomeActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

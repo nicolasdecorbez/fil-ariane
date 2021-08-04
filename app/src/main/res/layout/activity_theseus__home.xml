@@ -22,9 +22,7 @@
             android:layout_height="wrap_content"
             android:background="#FFFFFF" />
     </RelativeLayout>
-
     <include
         android:id="@+id/aToolbar"
         layout="@layout/toolbar"/>
-
 </RelativeLayout>

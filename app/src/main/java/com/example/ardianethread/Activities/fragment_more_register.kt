@@ -12,18 +12,14 @@ import androidx.fragment.app.FragmentActivity
 import com.example.ardianethread.R
 
 class fragment_more_register : Fragment() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-
         var v : View  = inflater.inflate(R.layout.fragment_more_register, container, false)
         var more_info_button : Button = v.findViewById(R.id.accept_register_em)
         var no_info_button : Button = v.findViewById(R.id.refuse_register_em)
@@ -41,6 +37,5 @@ class fragment_more_register : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 }
