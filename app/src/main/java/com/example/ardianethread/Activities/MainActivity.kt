@@ -40,11 +40,6 @@ class MainActivity : AppCompatActivity() {
         //SET TOOLBAR
         setSupportActionBar(findViewById(R.id.aToolbar))
         title = ""
-
-        //SET ON CLICK IMAGES
-
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -68,6 +63,21 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.subitem_alarm -> {
                 val intent = Intent(this, AlarmActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_Login -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_register -> {
+                val intent = Intent(this, RegisterActivity::class.java)
                 startActivity(intent)
                 true
             }

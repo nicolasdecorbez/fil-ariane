@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ArdianeThread">
-        <activity android:name=".Activities.RegisterActivity"></activity>
+        <activity android:name=".Activities.MessageActivity"></activity>
+        <activity android:name=".Activities.FriendActivity" />
+        <activity android:name=".Activities.RegisterActivity" />
         <activity android:name=".Activities.LoginActivity" />
         <activity android:name=".Activities.ArdianeHomeActivity" />
         <activity android:name=".Activities.TheseusHomeActivity" />

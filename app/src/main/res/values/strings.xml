@@ -19,7 +19,15 @@
     <string name="profile_item">My Profile</string>
     <string name="update_item">Check for updates</string>
     <string name="alarm_item">Alarm settings</string>
-    <string name="notif_item">Notification settings</string>
+    <string name="login_item">Login</string>
+    <string name="register_item">Register</string>
+    <string name="logout_item">Logout</string>
+    <string name="notif_item">Notification Settings</string>
+    <string name="message_item">Messages</string>
+
+    <!-- Friend's Strings -->
+    <string name="friend_title">Friends</string>
+    <string name="friend_add">Add new Friends</string>
 
     <!--Profile Info's Strings -->
 

@@ -1,82 +1,65 @@
 package com.example.ardianethread.Activities
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Button
-import android.widget.Switch
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.ardianethread.Data.Tones
-import com.example.ardianethread.R
+import com.example.ardianethread.Adapters.FriendAdapter
 import com.example.ardianethread.Adapters.ToneAdapter
+import com.example.ardianethread.Data.Tones
+import com.example.ardianethread.Data.Users
+import com.example.ardianethread.R
 
-class AlarmActivity : AppCompatActivity() {
+class FriendActivity : AppCompatActivity() {
 
-    private lateinit var toneView: RecyclerView
-    private lateinit var toneList: ArrayList<Tones>
-    lateinit var toneTitle : Array<String>
+    private lateinit var friendView: RecyclerView
+    private lateinit var friendList: ArrayList<Users>
+    lateinit var friendName : Array<String>
+    lateinit var friendNumber : Array<String>
 
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_alarm)
+        setContentView(R.layout.activity_friend)
         setSupportActionBar(findViewById(R.id.aToolbar))
         title = ""
 
+        friendView= findViewById<RecyclerView>(R.id.friend_view)
+        friendView.layoutManager = LinearLayoutManager(this)
+        friendView.setHasFixedSize(true)
 
-        // EXPAND TONES BUTTON//
-
-        val toogle_button_tone = findViewById<Button>(R.id.tone_button)
-
-        toneView= findViewById<RecyclerView>(R.id.tone_view)
-        toneView.layoutManager = LinearLayoutManager(this)
-        toneView.setHasFixedSize(true)
-
-        var is_expanded = false
-
-        toogle_button_tone.setOnClickListener() {
-            if(!is_expanded) {
-                is_expanded = true
-                toneView.visibility = VISIBLE
-            } else {
-                is_expanded = false
-                toneView.visibility = GONE
-            }
-        }
-        //HANDLE SWITCH RING MODE BUTTON
-
-        var switch_button = findViewById<Switch>(R.id.switch_ring_mode)
-
-        switch_button.setOnCheckedChangeListener { buttonView, isChecked ->
-            if(isChecked){
-                switch_button.text = "Ring Mode"
-            } else {
-                switch_button.text = "Vibrate Mode"
-            }
-        }
-
-        //POPULATE TONE VIEW//
-
-        toneTitle = arrayOf(
-            "Metallica -- Through The Never",
-            "Steevie Wonder -- Superstition",
-            "Doc Watson -- Black Mountain Rag"
+        friendName = arrayOf(
+            "Nico",
+            "Kevin",
+            "Lucas"
         )
 
-        toneList = arrayListOf<Tones>()
-        getTonesData()
+        friendNumber = arrayOf(
+            "06.00.00.00.01",
+            "06.00.00.00.02",
+            "06.00.00.00.03"
+        )
 
-        toneView.adapter = ToneAdapter(toneList)
+        friendList = arrayListOf<Users>()
+        getFriendData()
 
+        friendView.adapter = FriendAdapter(friendList)
+
+        var add_friend_button : Button = findViewById(R.id.add_friend_button)
+        val fragmentManager = supportFragmentManager
+        val transaction = fragmentManager.beginTransaction()
+
+        add_friend_button.setOnClickListener{
+            transaction.setReorderingAllowed(true)
+            transaction.replace(R.id.friend_layout, fragment_friend_add())
+            transaction.commit()
+        }
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         super.onCreateOptionsMenu(menu)
         menuInflater.inflate(R.menu.top_menu,menu)
@@ -111,6 +94,11 @@ class AlarmActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_notif -> {
                 val intent = Intent(this, NotificationActivity::class.java)
                 startActivity(intent)
@@ -119,11 +107,17 @@ class AlarmActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
-    private fun getTonesData(){
-        for(i in toneTitle.indices){
-            val tone = Tones(toneTitle[i])
-            toneList.add(tone)
+    private fun getFriendData() {
+        for (i in friendName.indices) {
+            val friend = Users(
+                name = "unknown",
+                firstname = friendName[i],
+                phone = friendNumber[i],
+                email = "unknown",
+                blood_type = "unknown",
+                hid = "unknown",
+            )
+            friendList.add(friend)
         }
     }
-    }
+}

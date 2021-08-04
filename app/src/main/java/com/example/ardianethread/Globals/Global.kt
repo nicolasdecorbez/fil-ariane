@@ -15,6 +15,4 @@ class Global : Application() {
         )
         var isDefined :Boolean = false
     }
-
-
 }

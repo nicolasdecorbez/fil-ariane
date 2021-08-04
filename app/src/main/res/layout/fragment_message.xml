@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/friend_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.fragment_theseus_home"
-    android:background="@color/black">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.fragment_message">
 
+    <!-- TODO: Update blank fragment layout -->
     <View
         android:layout_width="150dp"
         android:layout_height="3dp"
@@ -26,47 +26,31 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
         android:fontFamily="@font/autour_one"
-        android:text="@string/theseus_title"
+        android:text="@string/message_item"
         android:textColor="#EED082"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/theseus_ready"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
         android:layout_centerHorizontal="true"
-        android:fontFamily="@font/autour_one"
-        android:text="@string/ready_theseus"
-        android:textColor="#EED082" />
 
-    <TextView
-        android:id="@+id/theseus_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/theseus_ready"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/autour_one"
-        android:text=""
-        android:textColor="#EED082" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <Button
-        android:id="@+id/start_Button"
-        style="?attr/materialButtonOutlinedStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/theseus_user"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        android:text="Start new journey"
-        android:textColor="#EED082"
-        app:strokeColor="#EED082" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/tone_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            app:layout_constraintEnd_toEndOf="parent"
 
 
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>

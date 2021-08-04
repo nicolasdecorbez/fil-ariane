@@ -2,7 +2,7 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item2"
+        android:id="@+id/contact_button"
         android:icon="@drawable/ic_baseline_person_outline_24"
         android:title="@string/contact_menu"
         
@@ -24,6 +24,14 @@
             android:id="@+id/submenu_settings"
             android:title="@string/parameters_item"
             app:showAsAction="ifRoom">
+            <item
+                android:id="@+id/subitem_Login"
+                android:title="@string/login_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_register"
+                android:title="@string/register_item"
+                app:showAsAction="ifRoom" />
 
             <item
                 android:id="@+id/subitem_rescue"
@@ -45,8 +53,11 @@
                 android:id="@+id/subitem_notif"
                 android:title="@string/notif_item"
                 app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_logout"
+                android:title="@string/logout_item"
+                app:showAsAction="ifRoom" />
+
         </menu>
     </item>
-
-
 </menu>
