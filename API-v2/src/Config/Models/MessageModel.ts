@@ -6,6 +6,9 @@ import {
   UpdateDateColumn
 } from "typeorm"
 
+/**
+ *  [Entity to describe Messages in database]
+ */
 @Entity("messages")
 export class MessageModel {
   @PrimaryGeneratedColumn()

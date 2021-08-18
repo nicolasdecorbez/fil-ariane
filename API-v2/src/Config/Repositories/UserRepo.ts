@@ -1,7 +1,10 @@
 import { getRepository } from "typeorm"
 import { UserModel } from "../Models"
 
-// Payload definition for POST and PUT methods.
+/**
+ *  [payload definition for POST and PUT methods]
+ *  @return [nothing]
+ */
 export interface UserSchema {
   username: string
   firstName: string
@@ -10,13 +13,20 @@ export interface UserSchema {
   phone: string
 }
 
-// GET All Users
+/**
+ *  [async function to retrieve all users]
+ *  @return [a promise with an array of UserModel]
+ */
 export const getAllUsers = async (): Promise<Array<UserModel>> => {
   const userRepository = getRepository(UserModel)
   return userRepository.find()
 }
 
-// POST new User
+/**
+ *  [async function to create a new user]
+ *  @param  request [UserSchema with data]
+ *  @return         [a promise with the created user]
+ */
 export const createUser = async (request: UserSchema): Promise<UserModel> => {
   const userRepository = getRepository(UserModel)
   const user = new UserModel()
@@ -26,6 +36,12 @@ export const createUser = async (request: UserSchema): Promise<UserModel> => {
   })
 }
 
+/**
+ *  [async function to retrieve one user]
+ *  @param  request     [id or username of the user to find]
+ *  @param  isIdRequest [boolean to check if the request is an id]
+ *  @return             [a promise with an UserModel, or null]
+ */
 export const getOneUser = async (
   request: string,
   isIdRequest: boolean
@@ -40,7 +56,13 @@ export const getOneUser = async (
   return user
 }
 
-
+/**
+ *  [async function to update one user]
+ *  @param  request     [id or username of the user to update]
+ *  @param  data        [description]
+ *  @param  isIdRequest [boolean to check if the request is an id]
+ *  @return             [description]
+ */
 export const updateOneUser = async (
   request: string,
   data: UserSchema,
@@ -61,21 +83,26 @@ export const updateOneUser = async (
   return userRepository.save(user)
 }
 
-
+/**
+ *  [async function to delete one user]
+ *  @param  request     [id or username of the user to delete]
+ *  @param  isIdRequest [boolean to check if the request is an id]
+ *  @return             [UserModel with affected user]
+ */
 export const deleteOneUser = async (
   request: string,
   isIdRequest: boolean
 ): Promise<UserModel | null> => {
 
   const userRepository = getRepository(UserModel)
-  let user = null
+  let result = null
   if (isIdRequest)
-    user = await userRepository.delete({ id: Number(request) })
+    result = await userRepository.delete({ id: Number(request) })
   else
-    user = await userRepository.delete({ username: request })
+    result = await userRepository.delete({ username: request })
 
-  if (user.affected < 1)
+  if (result.affected < 1)
     return null
 
-  return user
+  return result
 }

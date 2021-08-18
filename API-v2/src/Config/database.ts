@@ -1,7 +1,9 @@
 import { ConnectionOptions } from "typeorm"
 import { UserModel, MessageModel } from "./Models"
 
-
+/**
+ *  [Database configuration for postgres connection]
+ */
 const config: ConnectionOptions = {
   type: "postgres",
   host: process.env.DATABASE_HOST || "localhost",
