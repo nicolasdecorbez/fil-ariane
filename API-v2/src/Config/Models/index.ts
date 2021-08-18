@@ -1,2 +1,3 @@
-import { User } from "./User"
-export { User }
+import { UserModel } from "./UserModel"
+import { MessageModel } from "./MessageModel"
+export { UserModel, MessageModel }

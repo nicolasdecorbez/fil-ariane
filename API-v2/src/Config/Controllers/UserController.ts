@@ -1,24 +1,80 @@
-import { User } from "../Models"
+import { UserModel } from "../Models"
 import {
-  UserSchema,
+  createUser,
+  deleteOneUser,
+  getOneUser,
   getAllUsers,
-  getUserById,
-  createUser
-} from "../Repositories/User"
+  updateOneUser,
+  UserSchema
+} from "../Repositories/UserRepo"
+import { StringVerification } from "../Security"
 
-export default class UserController {
-  // GET All Users
-  public async getAllUsers(): Promise<Array<User>> {
+export class UserController {
+
+  /**
+   *  [call the user repo to retrive all users from database]
+   *  @return         [a promise with an array of UserModel]
+   */
+  public async retrive_all(): Promise<Array<UserModel>> {
     return getAllUsers()
   }
 
-  // GET User by id
-  public async getUserById(id: string): Promise<User | null> {
-    return getUserById(Number(id))
+  /**
+   *  [call the user repo to create a brand new user]
+   *  @param  body    [format the sent body to a UserSchema]
+   *  @return         [a promise with the UserModel created]
+   */
+  public async create(
+    body: UserSchema
+  ): Promise<UserModel> {
+    return createUser(body)
   }
 
-  // POST new User
-  public async createUser(body: UserSchema): Promise<User> {
-    return createUser(body)
+  /**
+   *  [check the type of the request, then call the user repo to find one user in database]
+   *  @param  request [id of username to find]
+   *  @return         [a promise with the UserModel found, or null]
+   */
+  public async retrive_one(
+    request: string
+  ): Promise<UserModel | null> {
+    const verification = new StringVerification()
+    return getOneUser(
+      request,
+      verification.verifyIdRequest(request)
+    )
+  }
+
+  /**
+   *  [check the type of the request, then call the user repo to update one user in database]
+   *  @param  request [id of username to find for update]
+   *  @param  body    [format the sent body to a UserSchema]
+   *  @return         [a promise with the UserModel updated, or null]
+   */
+  public async update_one(
+    request: string,
+    body: UserSchema
+  ): Promise<UserModel | null> {
+    const verification = new StringVerification()
+    return updateOneUser(
+      request,
+      body,
+      verification.verifyIdRequest(request)
+    )
+  }
+
+  /**
+   *  [check the type of the request, then call the user repo to delete one user in database]
+   *  @param  request [id of username to find for deletion]
+   *  @return         [a promise with the UserModel deleted, or null]
+   */
+  public async delete_one(
+    request: string
+  ): Promise<UserModel | null> {
+    const verification = new StringVerification()
+    return deleteOneUser(
+      request,
+      verification.verifyIdRequest(request)
+    )
   }
 }
