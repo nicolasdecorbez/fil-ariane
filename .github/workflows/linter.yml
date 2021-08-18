@@ -1,9 +1,9 @@
-name: PostgreSQL service example
+name: ESLint
 on: push
 
 jobs:
   # Label of the container job
-  container-job:
+  check-api-lint:
     # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
     # Define working directory into env.
