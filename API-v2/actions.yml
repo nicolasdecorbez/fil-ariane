@@ -1,0 +1,5 @@
+name: "Ardiane API"
+description: "Ardiane's Thread API-v2"
+runs:
+  using: "docker"
+  image: "Dockerfile"
