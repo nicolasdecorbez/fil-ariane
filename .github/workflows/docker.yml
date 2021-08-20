@@ -5,21 +5,24 @@ on:
   pull_request:
     branches: [ master ]
   
-  steps:
-      - name: Login to DockerHub
-        uses: docker/login-action@v1 
-        with:
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+jobs:
+  docker-image-ci:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Login to DockerHub
+          uses: docker/login-action@v1 
+          with:
+            username: ${{ secrets.DOCKER_USER }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build and push
-        id: docker_build
-        uses: docker/build-push-action@v2
-        with:
-          context: ./API-v2
-          file: ./Dockerfile
-          push: true
-          tags: ardianethread/ardiane_api:latest
+        - name: Build and push
+          id: docker_build
+          uses: docker/build-push-action@v2
+          with:
+            context: ./API-v2
+            file: ./Dockerfile
+            push: true
+            tags: ardianethread/ardiane_api:latest
 
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        - name: Image digest
+          run: echo ${{ steps.docker_build.outputs.digest }}
