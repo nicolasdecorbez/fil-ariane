@@ -30,7 +30,6 @@ jobs:
         with:
           context: API-v2
           push: true
-          load: true
           tags: ardianethread/ardiane_api:latest
       -
         name: Inspect
