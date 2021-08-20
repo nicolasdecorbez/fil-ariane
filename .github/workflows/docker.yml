@@ -31,3 +31,6 @@ jobs:
           context: API-v2
           push: true
           tags: ardianethread/ardiane_api:latest
+      -
+        name: Inspect
+        run: docker image inspect ardianethread/ardiane_api:latest
