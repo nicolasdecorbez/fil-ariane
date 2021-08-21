@@ -1,3 +1,4 @@
+---
 name: Routes check
 on: push
 
@@ -37,9 +38,8 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: |
-        docker run --name api_test -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
-
-      -
+        run: docker run --name api_test -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
+      
+      - 
         name: API Logs
         run: docker logs api_test
