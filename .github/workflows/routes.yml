@@ -20,5 +20,8 @@ jobs:
           tags: ardianethread/ardiane_api:test
       -
         name: Inspect
-        run: |
-          docker image inspect ardianethread/ardiane_api:test
+        run: docker image inspect ardianethread/ardiane_api:test
+      -
+        name: Run the API
+        run: docker run ardianethread/ardiane_api:test
+      
