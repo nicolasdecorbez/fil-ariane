@@ -38,11 +38,7 @@ jobs:
       -
         name: Run the API
         run: |
-        docker run --name api_test \
-        -d -p 9000:9000 \
-        -e DATABASE_DB=ardiane \
-        -e DATABASE_HOST=postgres \
-        ardianethread/ardiane_api:test
+        docker run --name api_test -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
 
       -
         name: API Logs
