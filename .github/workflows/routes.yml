@@ -4,6 +4,20 @@ on: push
 jobs:
   load-docker-image:
     runs-on: ubuntu-latest
+    
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_USER: "postgres"
+          POSTGRES_PASSWORD: "postgres"
+          POSTGRES_DB: "ardiane"
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       -
         name: Checkout
@@ -23,5 +37,13 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run ardianethread/ardiane_api:test
-      
+        run: |
+        docker run --name api_test \
+        -d -p 9000:9000 \
+        -e DATABASE_DB=ardiane \
+        -e DATABASE_HOST=postgres \
+        ardianethread/ardiane_api:test
+
+      -
+        name: API Logs
+        run: docker logs api_test
