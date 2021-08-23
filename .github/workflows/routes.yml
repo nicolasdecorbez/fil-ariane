@@ -36,12 +36,9 @@ jobs:
       -
         name: Inspect
         run: docker image inspect ardianethread/ardiane_api:test
-      - 
-        name: List networks
-        run: docker network ls
       -
         name: Run the API
-        run: docker run --name ardiane-api -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
+        run: docker run --name ardiane-api -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
       - 
         name: Pull newman image
         run: docker pull postman/newman
