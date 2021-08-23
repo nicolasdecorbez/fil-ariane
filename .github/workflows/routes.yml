@@ -38,10 +38,10 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run --name ardiane-api --network $(docker network ls --filter=name="github_network*" --quiet) -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
+        run: docker run --name ardiane-api --network $(docker network ls --filter=name="github_network*" --quiet) -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres -d ardianethread/ardiane_api:test
       - 
         name: Pull newman image
         run: docker pull postman/newman
       - 
         name: Run postman collection
-        run: docker run -t postman/newman run "https://www.getpostman.com/collections/e33ad8d28e164e80aed5"
+        run: docker run --network $(docker network ls --filter=name="github_network*" --quiet) -t postman/newman run "https://www.getpostman.com/collections/e33ad8d28e164e80aed5"
