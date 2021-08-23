@@ -18,6 +18,7 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+          --network host
 
     steps:
       -
@@ -38,7 +39,7 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run --name ardiane-api -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
+        run: docker run --name ardiane-api -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres --network host ardianethread/ardiane_api:test
       - 
         name: Pull newman image
         run: docker pull postman/newman
