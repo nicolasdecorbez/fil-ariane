@@ -24,6 +24,9 @@ jobs:
         name: Checkout
         uses: actions/checkout@v2
       -
+        name: Get DB network ID
+        run: export DB_NETWORK=$(docker network ls --filter=name="github_network*" --quiet)
+      -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       -
@@ -38,7 +41,7 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run --name ardiane-api -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres --network postgres ardianethread/ardiane_api:test
+        run: docker run --name ardiane-api -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres --network $DB_NETWORK ardianethread/ardiane_api:test
       - 
         name: Pull newman image
         run: docker pull postman/newman
