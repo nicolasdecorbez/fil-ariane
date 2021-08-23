@@ -38,8 +38,11 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run --name api_test -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
-      
+        run: docker run --name ardiane-api -d -p 9000:9000 -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres ardianethread/ardiane_api:test
       - 
         name: Running containers list
         run: docker ps
+      -
+        name: Checking API logs
+        run: docker logs ardiane-api
+      
