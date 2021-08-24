@@ -11,10 +11,18 @@ import dbConfig from "./Config/database"
 const API_PORT = process.env.API_PORT || 9000
 
 const app = express()
+
+/**
+ *  CORS configuration allowing every origins 
+ */
+const allowedOrigins = ["*"]
+const options: cors.CorsOptions = {
+  origin: allowedOrigins
+}
+app.use(cors(options))
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors)
-
 app.use(Router)
 
 /**
