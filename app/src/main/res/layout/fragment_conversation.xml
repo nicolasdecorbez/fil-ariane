@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.fragment_conversation"
+    android:background="@color/black">
     <View
         android:layout_width="150dp"
         android:layout_height="3dp"
@@ -26,37 +23,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="703dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/autour_one"
-        android:text="@string/alarm_item"
+        android:text="User"
         android:textColor="#EED082"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         tools:ignore="MissingConstraints" />
 
-    <Switch
-        android:id="@+id/switch_ring_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="150dp"
-        android:fontFamily="@font/autour_one"
-        android:textColor="#EED082"
-        android:text="Ring Mode"
-        android:checked="true" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tone_button"
-        android:layout_centerHorizontal="true"
+        android:id="@+id/conv_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textView2"
 
+        android:layout_centerHorizontal="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -66,18 +49,6 @@
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
-
-
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/tone_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch_ring_mode"
-        android:layout_centerHorizontal="true"
-        android:text="Choose A Tone" />
-
-
 </RelativeLayout>

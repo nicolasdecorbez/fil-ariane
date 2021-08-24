@@ -36,12 +36,12 @@ class TheseusHomeActivity : AppCompatActivity() {
         username.text = Global.Current.User.firstname
 
         // LOAD JOURNEY FRAGMENT
-        val start_button: Button = findViewById<Button>(R.id.start_Button)
+        val start_button: Button = findViewById<Button>(R.id.start_button)
         val fragmentManager = supportFragmentManager
         start_button.setOnClickListener {
             val transaction = fragmentManager.beginTransaction()
             transaction.setReorderingAllowed(true)
-            transaction.replace(R.id.theseus_container,fragment_more_register())
+            transaction.replace(R.id.theseus_container,fragment_theseus_timer())
             transaction.addToBackStack(null)
             transaction.commit()
         }

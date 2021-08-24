@@ -9,7 +9,7 @@ import com.example.ardianethread.Data.Users
 import com.example.ardianethread.R
 
 class FriendAdapter(private val friendList: ArrayList<Users>):
-    RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
+RecyclerView.Adapter<FriendAdapter.FriendViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FriendAdapter.FriendViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.friend_item, parent,false)

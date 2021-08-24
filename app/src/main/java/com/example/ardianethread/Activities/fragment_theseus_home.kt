@@ -29,9 +29,6 @@ class fragment_theseus_home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val v = inflater.inflate(R.layout.fragment_theseus_home, container, false)
-
-
-
         return v
     }
 
@@ -42,7 +39,4 @@ class fragment_theseus_home : Fragment() {
             username.text = Global.Current.User.firstname
         }
     }
-
-
-
 }

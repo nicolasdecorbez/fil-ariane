@@ -57,9 +57,8 @@
         android:fontFamily="@font/autour_one"
         android:text=""
         android:textColor="#EED082" />
-
     <Button
-        android:id="@+id/start_Button"
+        android:id="@+id/start_button"
         style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -71,5 +70,10 @@
         android:textColor="#EED082"
         app:strokeColor="#EED082" />
 
-
+    <EditText
+        android:id="@+id/editTextTime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="time" />
 </RelativeLayout>
