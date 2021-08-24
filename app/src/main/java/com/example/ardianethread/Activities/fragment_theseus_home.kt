@@ -1,6 +1,5 @@
 package com.example.ardianethread.Activities
 
-
 import android.app.Activity
 import androidx.fragment.app.Fragment
 
@@ -18,10 +17,11 @@ import com.example.ardianethread.R
 
 
 
-
 class fragment_theseus_home : Fragment() {
-
-
+  
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

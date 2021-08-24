@@ -22,13 +22,11 @@ class ToneAdapter(private val toneList: ArrayList<Tones>):
         val currentTone = toneList[position]
         holder.toneTitle.text = currentTone.title
     }
-
     override fun getItemCount(): Int {
         return  toneList.size
     }
 
     class ToneViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-
         val toneTitle : TextView = itemView.findViewById(R.id.tone_title)
     }
 }

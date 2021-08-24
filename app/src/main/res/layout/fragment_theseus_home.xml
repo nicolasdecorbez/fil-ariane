@@ -7,9 +7,6 @@
     tools:context=".Activities.fragment_theseus_home"
     android:background="@color/black">
 
-    <!-- TODO: Update blank fragment layout -->
-
-
     <View
         android:layout_width="150dp"
         android:layout_height="3dp"

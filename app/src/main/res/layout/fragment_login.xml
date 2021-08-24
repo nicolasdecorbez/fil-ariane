@@ -102,6 +102,4 @@ tools:context=".Activities.fragment_login">
         app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.97"
         app:strokeColor="#EED082" />
-
-
 </RelativeLayout>

@@ -65,8 +65,7 @@
                 android:id="@+id/subitem_logout"
                 android:title="@string/logout_item"
                 app:showAsAction="ifRoom" />
+
         </menu>
     </item>
-
-
 </menu>

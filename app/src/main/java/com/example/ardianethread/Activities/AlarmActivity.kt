@@ -22,6 +22,7 @@ class AlarmActivity : AppCompatActivity() {
     private lateinit var toneList: ArrayList<Tones>
     lateinit var toneTitle : Array<String>
 
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

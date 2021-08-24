@@ -23,7 +23,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
         var name_field : EditText = findViewById(R.id.editTextPersonName)
         var firstname_field : EditText = findViewById(R.id.editTextPersonName2)
         var phone_field : EditText = findViewById(R.id.editTextPhone)
@@ -95,5 +94,4 @@ class RegisterActivity : AppCompatActivity() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

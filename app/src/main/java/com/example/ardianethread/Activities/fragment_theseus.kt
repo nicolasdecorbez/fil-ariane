@@ -28,9 +28,6 @@ class fragment_theseus : Fragment() {
         arguments?.let {
 
         }
-
-
-
     }
 
     override fun onCreateView(
@@ -57,7 +54,6 @@ class fragment_theseus : Fragment() {
             fragment_theseus().apply {
 
                 arguments = Bundle().apply {
-
                 }
             }
     }
