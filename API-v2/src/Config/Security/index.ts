@@ -1,2 +1,3 @@
 import StringVerification from "./stringVerification"
-export { StringVerification }
+import ErrorCodeGenerator from "./errorCodeGenerator"
+export { StringVerification, ErrorCodeGenerator }
