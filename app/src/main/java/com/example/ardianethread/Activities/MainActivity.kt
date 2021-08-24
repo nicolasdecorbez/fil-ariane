@@ -71,6 +71,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.message_button ->{
+                val intent = Intent(this, MessageActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_Login -> {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)

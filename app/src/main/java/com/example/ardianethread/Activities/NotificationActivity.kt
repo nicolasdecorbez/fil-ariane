@@ -70,6 +70,21 @@ class NotificationActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.subitem_Login -> {
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.subitem_register -> {
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_notif -> {
                 val intent = Intent(this, NotificationActivity::class.java)
                 startActivity(intent)

@@ -2,12 +2,12 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/contact_button"
-        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:id="@+id/message_button"
+        android:icon="@android:drawable/ic_dialog_email"
         android:title="@string/contact_menu"
-        
+
         app:showAsAction="ifRoom">
-      
+
     </item>
     <item
         android:id="@+id/home_button"
@@ -15,6 +15,14 @@
 
         android:title="Home"
         app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/contact_button"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="@string/contact_menu"
+
+        app:showAsAction="ifRoom">
+
+    </item>
     <item
         android:id="@+id/item1"
         android:icon="@drawable/ic_baseline_menu_24"

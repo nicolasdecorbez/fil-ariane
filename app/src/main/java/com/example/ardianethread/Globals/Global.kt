@@ -1,6 +1,7 @@
 package com.example.ardianethread.Globals
 
 import android.app.Application
+import com.example.ardianethread.Data.Journey
 import com.example.ardianethread.Data.Users
 
 class Global : Application() {
@@ -14,5 +15,21 @@ class Global : Application() {
             hid = "0"
         )
         var isDefined :Boolean = false
+    }
+   object Corres {
+       var name = ""
+   }
+    object CurrentJourneys {
+        var GlobalJourneyList : ArrayList<Journey> = arrayListOf()
+        var isJourneyDefined = false
+
+        fun  inflateJourneyInfo(friend:String, timer:String){
+            var journey : Journey = Journey(
+                user = friend,
+                timer = timer
+            )
+            GlobalJourneyList.add(journey)
+            isJourneyDefined = true
+        }
     }
 }

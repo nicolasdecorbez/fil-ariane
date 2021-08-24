@@ -6,12 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ardianethread.Adapters.FriendAdapter
-import com.example.ardianethread.Adapters.ToneAdapter
-import com.example.ardianethread.Data.Tones
 import com.example.ardianethread.Data.Users
 import com.example.ardianethread.R
 
@@ -84,6 +81,16 @@ class FriendActivity : AppCompatActivity() {
                 startActivity(intent)
                 true
             }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.message_button ->{
+                val intent = Intent(this, MessageActivity::class.java)
+                startActivity(intent)
+                true
+            }
             R.id.subitem_Login -> {
                 val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
@@ -91,11 +98,6 @@ class FriendActivity : AppCompatActivity() {
             }
             R.id.subitem_register -> {
                 val intent = Intent(this, RegisterActivity::class.java)
-                startActivity(intent)
-                true
-            }
-            R.id.contact_button ->{
-                val intent = Intent(this, FriendActivity::class.java)
                 startActivity(intent)
                 true
             }

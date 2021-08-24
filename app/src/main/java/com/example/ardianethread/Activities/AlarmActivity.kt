@@ -35,7 +35,7 @@ class AlarmActivity : AppCompatActivity() {
 
         val toogle_button_tone = findViewById<Button>(R.id.tone_button)
 
-        toneView= findViewById<RecyclerView>(R.id.tone_view)
+        toneView= findViewById<RecyclerView>(R.id.message_view)
         toneView.layoutManager = LinearLayoutManager(this)
         toneView.setHasFixedSize(true)
 
@@ -98,6 +98,16 @@ class AlarmActivity : AppCompatActivity() {
             }
             R.id.subitem_alarm -> {
                 val intent = Intent(this, AlarmActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.contact_button ->{
+                val intent = Intent(this, FriendActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.message_button ->{
+                val intent = Intent(this, MessageActivity::class.java)
                 startActivity(intent)
                 true
             }

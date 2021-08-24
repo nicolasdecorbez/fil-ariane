@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ProfileFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Activities.fragment_theseus_ardiane"
+    android:background="@color/black">
 
     <View
         android:layout_width="150dp"
@@ -26,9 +24,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="703dp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/autour_one"
-        android:text="@string/alarm_item"
+        android:text="@string/theseus_title"
         android:textColor="#EED082"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -37,47 +35,46 @@
         app:layout_constraintTop_toBottomOf="@+id/top_bar"
         tools:ignore="MissingConstraints" />
 
-    <Switch
-        android:id="@+id/switch_ring_mode"
+    <TextView
+        android:id="@+id/set_ardiane_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="false"
-        android:layout_marginStart="30dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="150dp"
         android:fontFamily="@font/autour_one"
-        android:textColor="#EED082"
-        android:text="Ring Mode"
-        android:checked="true" />
+        android:text="@string/set_ardiane_text"
+        android:textColor="#EED082" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <Button
+        android:id="@+id/start_journey_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tone_button"
+        android:layout_below="@id/ardiane_container"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:text="@string/start_journey_button"
+        android:textColor="#EED082"
+        app:strokeColor="#EED082" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ardiane_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/set_ardiane_text"
         android:layout_centerHorizontal="true"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/message_view"
+            android:id="@+id/ardiane_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             app:layout_constraintEnd_toEndOf="parent"
-
-
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <Button
-        android:id="@+id/tone_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/switch_ring_mode"
-        android:layout_centerHorizontal="true"
-        android:text="Choose A Tone" />
 
 
 </RelativeLayout>
