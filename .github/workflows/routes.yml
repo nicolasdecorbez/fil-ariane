@@ -1,6 +1,10 @@
 ---
 name: Routes check
-on: push
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   load-docker-image:
