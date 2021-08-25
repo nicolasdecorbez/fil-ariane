@@ -5,7 +5,7 @@ version: "3"
 services:
   apiv2:
     container_name: ardiane_api
-    build: ./API-v2
+    image: ardianethread/ardiane_api
     depends_on:
       - database
     environment:
