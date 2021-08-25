@@ -24,6 +24,8 @@ services:
       POSTGRES_USER: "ardiane"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "ardiane"
+    labels: 
+      - traefik.enable=false
     restart: on-failure
     volumes:
       - "ardiane-data:/var/lib/postgresql/data"

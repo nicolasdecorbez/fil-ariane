@@ -32,7 +32,7 @@ export class UserController {
 
   /**
    *  [check the type of the request, then call the user repo to find one user in database]
-   *  @param  request [id of username to find]
+   *  @param  request [id or username to find]
    *  @return         [a promise with the UserModel found, or null]
    */
   public async retrive_one(
@@ -47,7 +47,7 @@ export class UserController {
 
   /**
    *  [check the type of the request, then call the user repo to update one user in database]
-   *  @param  request [id of username to find for update]
+   *  @param  request [id or username to find for update]
    *  @param  body    [format the sent body to a UserSchema]
    *  @return         [a promise with the UserModel updated, or null]
    */
@@ -65,7 +65,7 @@ export class UserController {
 
   /**
    *  [check the type of the request, then call the user repo to delete one user in database]
-   *  @param  request [id of username to find for deletion]
+   *  @param  request [id or username to find for deletion]
    *  @return         [a promise with the UserModel deleted, or null]
    */
   public async delete_one(

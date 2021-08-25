@@ -1,6 +1,11 @@
 import { getRepository } from "typeorm"
 import { UserModel } from "../Models"
 
+function UserNotFound(user) {
+  this.name = "NotFoundError"
+  this.message = "User " + user + " not found."
+}
+
 /**
  *  [payload definition for POST and PUT methods]
  *  @return [nothing]
@@ -27,7 +32,10 @@ export const getAllUsers = async (): Promise<Array<UserModel>> => {
  *  @param  request [UserSchema with data]
  *  @return         [a promise with the created user]
  */
-export const createUser = async (request: UserSchema): Promise<UserModel> => {
+export const createUser = async (
+  request: UserSchema
+): Promise<UserModel> => {
+
   const userRepository = getRepository(UserModel)
   const user = new UserModel()
   return userRepository.save({
@@ -45,7 +53,7 @@ export const createUser = async (request: UserSchema): Promise<UserModel> => {
 export const getOneUser = async (
   request: string,
   isIdRequest: boolean
-): Promise<UserModel | null> => {
+): Promise<UserModel> => {
 
   const userRepository = getRepository(UserModel)
   let user = null
@@ -53,6 +61,10 @@ export const getOneUser = async (
     user = await userRepository.findOne({ id: Number(request) })
   else
     user = await userRepository.findOne({ username: request })
+
+  if (!user)
+    throw new UserNotFound(request) as Error
+
   return user
 }
 
@@ -67,7 +79,7 @@ export const updateOneUser = async (
   request: string,
   data: UserSchema,
   isIdRequest: boolean
-): Promise<UserModel | null> => {
+): Promise<UserModel> => {
 
   const userRepository = getRepository(UserModel)
   let user = null
@@ -77,7 +89,7 @@ export const updateOneUser = async (
     user = await userRepository.findOne({ username: request })
 
   if (!user)
-    return null
+    throw new UserNotFound(request) as Error
 
   userRepository.merge(user, data)
   return userRepository.save(user)
@@ -92,7 +104,7 @@ export const updateOneUser = async (
 export const deleteOneUser = async (
   request: string,
   isIdRequest: boolean
-): Promise<UserModel | null> => {
+): Promise<UserModel> => {
 
   const userRepository = getRepository(UserModel)
   let result = null
@@ -102,7 +114,7 @@ export const deleteOneUser = async (
     result = await userRepository.delete({ username: request })
 
   if (result.affected < 1)
-    return null
+    throw new UserNotFound(request) as Error
 
   return result
 }
