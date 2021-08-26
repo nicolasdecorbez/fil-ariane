@@ -22,7 +22,7 @@ export interface UserSchema {
  *  [async function to retrieve all users]
  *  @return [a promise with an array of UserModel]
  */
-export const getAllUsers = async (): Promise<Array<UserModel>> => {
+export const getAllUsers = async (): Promise<UserModel[]> => {
   const userRepository = getRepository(UserModel)
   return userRepository.find()
 }
@@ -38,6 +38,7 @@ export const createUser = async (
 
   const userRepository = getRepository(UserModel)
   const user = new UserModel()
+  
   return userRepository.save({
     ...user,
     ...request,
@@ -57,14 +58,20 @@ export const getOneUser = async (
 
   const userRepository = getRepository(UserModel)
   let user = null
+
   if (isIdRequest)
+  {
     user = await userRepository.findOne({ id: Number(request) })
+  }
   else
+  {
     user = await userRepository.findOne({ username: request })
-
+  }
+    
   if (!user)
+  {
     throw new UserNotFound(request) as Error
-
+  }
   return user
 }
 
@@ -83,13 +90,20 @@ export const updateOneUser = async (
 
   const userRepository = getRepository(UserModel)
   let user = null
-  if (isIdRequest)
-    user = await userRepository.findOne({ id: Number(request) })
-  else
-    user = await userRepository.findOne({ username: request })
 
+  if (isIdRequest)
+  {
+    user = await userRepository.findOne({ id: Number(request) })
+  }
+  else
+  {
+    user = await userRepository.findOne({ username: request })
+  }
+    
   if (!user)
+  {
     throw new UserNotFound(request) as Error
+  }
 
   userRepository.merge(user, data)
   return userRepository.save(user)
@@ -108,13 +122,19 @@ export const deleteOneUser = async (
 
   const userRepository = getRepository(UserModel)
   let result = null
+
   if (isIdRequest)
+  {
     result = await userRepository.delete({ id: Number(request) })
+  }
   else
+  {
     result = await userRepository.delete({ username: request })
+  }
 
   if (result.affected < 1)
+  {
     throw new UserNotFound(request) as Error
-
+  }
   return result
 }
