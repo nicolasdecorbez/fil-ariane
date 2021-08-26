@@ -1,6 +1,6 @@
 # API v2
 
-On a ici notre deuxième version de notre main API. Comparé à la [v1](../API), j'ai implémenté plusieurs fonctionnalités dans cette dernière :
+On a ici notre deuxième version de notre main API. Comparé à la `v1`, j'ai implémenté plusieurs fonctionnalités dans cette dernière :
 - Utilisation d'un [ORM](https://blog.bitsrc.io/what-is-an-orm-and-why-you-should-use-it-b2b6f75f5e2a) : *[typeorm](https://typeorm.io/#/)*. Il va surtout nous servir à attaquer notre DB plus facilement en créant :
   - Des [Models](src/Models) : ce sont nos schéma de base de données.
   - Des [Repositories](src/Repositories) : nos méthodes pour attaquer notre DB.
@@ -28,6 +28,6 @@ Avec `docker-compose`, tout ce travail est fait automatiquement ; c'est pour ça
 
 ## Test des routes
 
-Afin de tester les différentes routes implémentées, je vous ai mis à disposition une [collection Postman](../postman) qu'il vous suffit soit d'importer, soit de lancer avec [`newman`](https://learning.postman.com/docs/running-collections/using-newman-cli/command-line-integration-with-newman/#:~:text=Newman%20is%20a%20command%20line,directly%20from%20the%20command%20line.&text=Newman%20maintains%20feature%20parity%20with,the%20collection%20runner%20in%20Postman.)
+L'API entière est testé lors du processus de [*Continuous integration*](https://en.wikipedia.org/wiki/Continuous_integration) grâce à une collection [Postman](https://www.postman.com/) disponible [**ici**](https://www.getpostman.com/collections/e33ad8d28e164e80aed5). Vous pouvez voir les résultats de ce test, nommé *`Routes check`*, dans la partie `Actions` de GitHub.
 
-> La collection Postman se connecte à l'API grâce à Traefik. Si vous la lancez avec `docker-compose`, pensez à éditer votre `/etc/hosts`
+> La collection Postman base du une variable `host`. Pensez à l'adapter à vos besoin pour pouvoir accéder aux routes.
