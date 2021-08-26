@@ -1,7 +1,6 @@
 # Script de pré-configuration
-*decorb_n & kechit_r*
 
-Ce script est destiné à reproduire l'environnement de travail qui nous a été proposé pour ce sujet.
+Ce script est destiné à installer `Docker` et `docker-compose`.
 
 ## Fonctionnalités
 - Création d'un utilisateur (voir ci-dessous pour la configuration).

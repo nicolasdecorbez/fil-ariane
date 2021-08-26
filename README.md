@@ -1,50 +1,32 @@
-# API v2 + Docker
+# Ardiane's Thread API
 
-REBUILD TOTAL
+## What is this ? 
 
-## Routes
+This is a repository for our end-of-year project at ETNA, **Ardiane's Thread**.
 
-`ARDIANE API` -> app & dashboard
-- [ ] Users -> *to adjust*
-  - [x] GET
-  - [x] POST
-  - [ ] UPDATE
-  - [x] DELETE
-- [ ] Location (depends Users) -> *to create*
-  - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
-- [ ] Messages -> *to create*
-  - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
-- [ ] Meeting (?) -> *to create*
-  - [ ] GET
-  - [ ] POST
-  - [ ] UPDATE
-  - [ ] DELETE
+The API, written in [TypeScript](https://github.com/microsoft/TypeScript), it is based on the [Express](https://github.com/expressjs/express) framework ; using [TypeORM](https://github.com/typeorm/typeorm), it connects to a [PostgreSQL](https://github.com/postgres/postgres) database. We also have implemented [CORS](https://www.npmjs.com/package/cors) managment for all of our routes.
 
-`TRAEFIK API` -> dashboard
-- [ ] routers
-  - [ ] GET
-- [ ] middlewares
-  - [ ] GET
-- [ ] services
-  - [ ] GET
+## Installation
 
-`CLOUD PROVIDER API` -> dashboard
-- [ ] instances
-  - [ ] GET
-- [ ] metrics
-  - [ ] GET
-- [ ] logging
-  - [ ] GET
+To run the API, you must setup your (or a virtual) machine based on Debian 10. To do so, we provided you a configuration script, located in the [configuration](./configuration/) folder. 
 
+> We provided a full guide to adapt the script to your needs. You can find it [here](./configuration/README.md)
 
-## Liens
+This done, the API can be launched by running `docker-compose up` at the root of this project. If it is not the first time you run this project, please be aware to run `docker-compose build` to run the latest version available.
 
-- [HTTP Return codes](https://github.com/for-GET/http-decision-diagram) (merci @tbobm)
-- [Git Commit msg](https://karma-runner.github.io/0.10/dev/git-commit-msg.html)
-- [Docker installation](https://docs.docker.com/get-docker/)
+> For more informations, you can refer to the [API documentation](./API-v2/README.md). 
+
+## Stack description
+
+For the API, we implemented 3 different services : 
+- The API
+- A PostgreSQL database
+- A Traefik instance as a reverse-proxy
+
+## CI / CD
+
+To automate the code testings, we implemented 2 workflows : 
+- The [first one](.github/workflows/linter.yml) checks if the linter is respectd.
+- The [second one](.github/workflows/routes.yml) checks if all the routes are functionals. 
+
+The second one is only launched on *push* or *pull-request* to the branch *master*. Then, if theses checks passed, we push the Docker image of the API to the [Docker Hub registery](https://hub.docker.com/r/ardianethread/ardiane_api) using the [CD workflow](.github/workflows/docker.yml).
