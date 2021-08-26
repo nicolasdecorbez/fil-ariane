@@ -20,7 +20,7 @@ export class MessageController {
    *  [call the message repo to retrive all messages from database]
    *  @return         [a promise with an array of MessageModel]
    */
-  public async retrive_all(): Promise<Array<MessageModel>> {
+  public async retrive_all(): Promise<MessageModel[]> {
     return getAllMessages()
   }
 
@@ -44,8 +44,9 @@ export class MessageController {
 
     const verification = new StringVerification()
     if(!verification.verifyIdRequest(request))
+    {
       throw new BadIdRequest(request) as Error
-
+    }
     return getOneMessage(request)
   }
 
@@ -56,12 +57,13 @@ export class MessageController {
    */
   public async retrieve_all_from_receiver(
     request: string
-  ): Promise<Array<MessageModel>> {
+  ): Promise<MessageModel[]> {
 
     const verification = new StringVerification()
     if(!verification.verifyIdRequest(request))
+    {
       throw new BadIdRequest(request) as Error
-
+    }
     return getAllMessageFromReceiver(request)
   }
 
@@ -72,12 +74,13 @@ export class MessageController {
    */
   public async retrieve_all_from_sender(
     request: string
-  ): Promise<Array<MessageModel>> {
+  ): Promise<MessageModel[]> {
 
     const verification = new StringVerification()
     if(!verification.verifyIdRequest(request))
+    {
       throw new BadIdRequest(request) as Error
-
+    }
     return getAllMessageFromSender(request)
   }
 }
