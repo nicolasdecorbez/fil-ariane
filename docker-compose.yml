@@ -14,7 +14,7 @@ services:
       DATABASE_DB: "ardiane"
       DATABASE_HOST: "database"
     labels:
-      - traefik.http.routers.api.rule=Host(`api.ardiane.local`)
+      - traefik.http.routers.api.rule=Host(`api.ardiane.com`)
     restart: on-failure
 
   database:
@@ -24,8 +24,6 @@ services:
       POSTGRES_USER: "ardiane"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "ardiane"
-    labels: 
-      - traefik.enable=false
     restart: on-failure
     volumes:
       - "ardiane-data:/var/lib/postgresql/data"
@@ -34,7 +32,7 @@ services:
     container_name: ardiane_proxy
     image: traefik:2.4.8
     labels:
-      - traefik.http.routers.dashboard.rule=Host(`proxy.ardiane.local`)
+      - traefik.http.routers.dashboard.rule=Host(`proxy.ardiane.com`)
       - traefik.http.routers.dashboard.service=api@internal
     ports:
       - "80:80"
