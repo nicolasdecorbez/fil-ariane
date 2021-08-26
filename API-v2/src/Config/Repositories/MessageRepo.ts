@@ -19,7 +19,7 @@ export interface MessageSchema {
  *  [async function to retrieve all messages]
  *  @return [a promise with an array of MessageModel]
  */
-export const getAllMessages = async (): Promise<Array<MessageModel>> => {
+export const getAllMessages = async (): Promise<MessageModel[]> => {
   const messageRepository = getRepository(MessageModel)
   return messageRepository.find()
 }
@@ -35,7 +35,6 @@ export const createMessage = async (
 
   const messageRepository = getRepository(MessageModel)
   const message = new MessageModel()
-
   return messageRepository.save({
     ...message,
     ...request,
@@ -54,10 +53,11 @@ export const getOneMessage = async (
   const messageRepository = getRepository(MessageModel)
   let message = null
   message = await messageRepository.findOne({id: Number(request)})
-
+  
   if(!message)
+  {
     throw new ErrorNotFound("Message", request) as Error
-
+  }
   return message
 }
 
@@ -68,7 +68,7 @@ export const getOneMessage = async (
  */
 export const getAllMessageFromReceiver = async (
   request: string
-): Promise<Array<MessageModel>> => {
+): Promise<MessageModel[]> => {
   
   const messageRepository = getRepository(MessageModel)
   const message = await messageRepository.find({
@@ -78,8 +78,9 @@ export const getAllMessageFromReceiver = async (
   })
 
   if(message.length < 1)
+  {
     throw new ErrorNotFound("Receiver", request) as Error
-
+  }
   return message
 }
 
@@ -90,7 +91,7 @@ export const getAllMessageFromReceiver = async (
  */
 export const getAllMessageFromSender = async (
   request: string
-): Promise<Array<MessageModel>> => {
+): Promise<MessageModel[]> => {
   
   const messageRepository = getRepository(MessageModel)
   const message = await messageRepository.find({
@@ -100,7 +101,8 @@ export const getAllMessageFromSender = async (
   })
 
   if(message.length < 1)
+  {
     throw new ErrorNotFound("Sender", request) as Error
-
+  }
   return message
 }

@@ -15,7 +15,7 @@ export class UserController {
    *  [call the user repo to retrive all users from database]
    *  @return         [a promise with an array of UserModel]
    */
-  public async retrive_all(): Promise<Array<UserModel>> {
+  public async retrive_all(): Promise<UserModel[]> {
     return getAllUsers()
   }
 
@@ -37,7 +37,7 @@ export class UserController {
    */
   public async retrive_one(
     request: string
-  ): Promise<UserModel | null> {
+  ): Promise<UserModel> {
     const verification = new StringVerification()
     return getOneUser(
       request,
@@ -54,7 +54,7 @@ export class UserController {
   public async update_one(
     request: string,
     body: UserSchema
-  ): Promise<UserModel | null> {
+  ): Promise<UserModel> {
     const verification = new StringVerification()
     return updateOneUser(
       request,
@@ -70,7 +70,7 @@ export class UserController {
    */
   public async delete_one(
     request: string
-  ): Promise<UserModel | null> {
+  ): Promise<UserModel> {
     const verification = new StringVerification()
     return deleteOneUser(
       request,
