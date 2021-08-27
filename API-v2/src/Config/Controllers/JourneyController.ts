@@ -10,7 +10,8 @@ import {
     JourneySchema,
     updateOneJourney,
     updateAllJourneyFromThesus,
-    JourneyRequest
+    JourneyRequest,
+    getPairOfTheseusAndArdiane
   } from "../Repositories/JourneyRepo"
 import { StringVerification } from "../Security"
 
@@ -164,7 +165,7 @@ export class JourneyController {
      *  @param  request [id of the theseus to find for deletion]
      *  @return         [a promise with the DeletedResult]
      */
-     public async delete_all_of_theseus(
+    public async delete_all_of_theseus(
       request: string
     ): Promise<DeleteResult> {
       
@@ -174,6 +175,23 @@ export class JourneyController {
         throw new BadIdRequest(request) as Error
       }
       return deleteAllJourneyOfTheseus(request)
+    }
+
+    public async get_pair(
+      ardianeId: string,
+      theseusId: string
+    ): Promise<JourneyModel> {
+
+      const verification = new StringVerification()
+      if(!verification.verifyIdRequest(ardianeId))
+      {
+        throw new BadIdRequest(ardianeId) as Error
+      } 
+      else if(!verification.verifyIdRequest(theseusId))
+      {
+        throw new BadIdRequest(theseusId) as Error
+      }
+      return getPairOfTheseusAndArdiane(ardianeId, theseusId)
     }
   }
   

@@ -14,7 +14,7 @@ function ErrorNotFound(type: string, id: string) {
 /**
  *  payload definition for incomming requests
  */
- export interface JourneyRequest {
+export interface JourneyRequest {
   ardianeId: number
   theseusId: number
   latitude: string
@@ -36,7 +36,7 @@ export interface JourneySchema {
  *  [async function to retrieve all journeys]
  *  @return [a promise with an array of JourneyModel]
  */
- export const getAllJourneys = async (): Promise<JourneyModel[]> => {
+export const getAllJourneys = async (): Promise<JourneyModel[]> => {
   const journeyRepository = getRepository(JourneyModel)
   return journeyRepository.find()
 }
@@ -63,7 +63,7 @@ export interface JourneySchema {
  *  @param  request     [id of the journey to find]
  *  @return             [a promise with a JourneyModel]
  */
- export const getOneJourney = async (
+export const getOneJourney = async (
   request: string
 ): Promise<JourneyModel> => {
   
@@ -84,7 +84,7 @@ export interface JourneySchema {
  *  @param  data        [JourneySchema with changes]
  *  @return             [a promise with an updated JourneyModel]
  */
- export const updateOneJourney = async (
+export const updateOneJourney = async (
   request: string,
   data: JourneySchema
 ): Promise<JourneyModel> => {
@@ -107,7 +107,7 @@ export interface JourneySchema {
  *  @param  data        [JourneySchema with changes]
  *  @return             [a promise with an array of updated JourneyModel]
  */
- export const updateAllJourneyFromThesus = async (
+export const updateAllJourneyFromThesus = async (
   request: string,
   data: JourneySchema
 ): Promise<JourneyModel[]> => {
@@ -137,7 +137,7 @@ export interface JourneySchema {
  *  @param  request     [id of the journey to delete]
  *  @return             [JourneyModel with affected journey]
  */
- export const deleteOneJourney = async (
+export const deleteOneJourney = async (
   request: string
 ): Promise<DeleteResult> => {
 
@@ -158,7 +158,7 @@ export interface JourneySchema {
  *  @param  request     [id of the theseus to find]
  *  @return             [a promise with an array of JourneyModel]
  */
- export const getAllJourneysFromTheseus = async (
+export const getAllJourneysFromTheseus = async (
   request: string
 ): Promise<JourneyModel[]> => {
   
@@ -181,7 +181,7 @@ export interface JourneySchema {
  *  @param  request     [id of the theseus]
  *  @return             [DeletedResult with affected journey]
  */
- export const deleteAllJourneyOfTheseus = async (
+export const deleteAllJourneyOfTheseus = async (
   request: string
 ): Promise<DeleteResult> => {
 
@@ -195,4 +195,27 @@ export interface JourneySchema {
     throw new ErrorNotFound("Journeys for Theseus", request) as Error
   }
   return result
+}
+
+export const getPairOfTheseusAndArdiane = async (
+  ardianeReq: string,
+  theseusReq: string
+): Promise<JourneyModel> => {
+  
+  const journeyRepository = getRepository(JourneyModel)
+  let journey = null
+  journey = await journeyRepository.findOne({
+    ardianeId: Number(ardianeReq),
+    theseusId: Number(theseusReq)
+  })
+
+  if(!journey)
+  {
+    throw new ErrorNotFound(
+      "Journey for Theseus " + theseusReq + " and Ardiane",
+       ardianeReq
+    ) as Error
+  }
+  
+  return journey
 }

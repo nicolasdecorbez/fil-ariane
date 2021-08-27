@@ -118,4 +118,17 @@ router.get("/theseus/:id", async (req, res) => {
   }
 })
 
+/**
+ * TODO: doc router controller repo
+ */
+router.get("/theseus/:theseusId/ardiane/:ardianeId", async (req, res) => {
+  try {
+    const response = await journeyController.get_pair(req.params.ardianeId, req.params.theseusId)
+    return res.status(200).send(response)
+  } catch (error) {
+    const code = httpError.readError(error)
+    return res.status(code).send(error)
+  }
+})
+
 export default router
