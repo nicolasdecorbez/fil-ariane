@@ -1,17 +1,33 @@
 import { DeleteResult, getRepository } from "typeorm"
 import { JourneyModel } from "../Models"
 
+/**
+ * [generate an error message if the id of the type doesn't exists]
+ * @param type    [the type of the ressource]
+ * @param id      [the id of the ressource]
+ */
 function ErrorNotFound(type: string, id: string) {
   this.name = "NotFoundError"
   this.journey = type + " " + id + " not found."
 }
 
 /**
- *  payload definition for POST and PUT methods
+ *  payload definition for incomming requests
+ */
+ export interface JourneyRequest {
+  ardianeId: number
+  theseusId: number
+  latitude: string
+  longitude: string
+  returnDate: string
+}
+
+/**
+ *  payload definition for database writing
  */
 export interface JourneySchema {
   ardianeId: number
-  thesseusId: number
+  theseusId: number
   location: string
   returnDate: string
 }

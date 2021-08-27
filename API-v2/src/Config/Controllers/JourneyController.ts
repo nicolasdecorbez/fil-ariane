@@ -9,14 +9,41 @@ import {
     getOneJourney,
     JourneySchema,
     updateOneJourney,
-    updateAllJourneyFromThesus
+    updateAllJourneyFromThesus,
+    JourneyRequest
   } from "../Repositories/JourneyRepo"
 import { StringVerification } from "../Security"
 
+
+/**
+ * [generate an error message when the id is not an int]
+ * @param id    [the string with the invalid id]
+ */
 function BadIdRequest(id: string) {
     this.name = "QueryFailedError"
     this.journey = "Invalid ID request : " + id + " -> Must be a number."
 }
+
+/**
+ *  [generate a JourneySchema from a JourneyRequest]
+ * @param input [the JourneyRequest to transform]
+ * @returns     [the JourneySchema to send to repo]
+ */
+function GenerateSchema(input: JourneyRequest): JourneySchema {
+    let schema: JourneySchema = {
+      ardianeId: input.ardianeId,
+      theseusId: input.theseusId,
+      returnDate: input.returnDate,
+      location: undefined
+    } 
+
+    if (input.latitude && input.longitude) {
+      schema.location = "http://www.google.com/maps/place/" + input.latitude + "," + input.longitude
+    }
+  
+    return schema
+}
+
 
 export class JourneyController {
 
@@ -33,8 +60,8 @@ export class JourneyController {
      *  @param  body    [format the sent body to a JourneySchema]
      *  @return         [a promise with the JourneySchema created]
      */
-    public async create(body: JourneySchema): Promise<JourneyModel> {
-      return createJourney(body)
+    public async create(body: JourneyRequest): Promise<JourneyModel> {
+      return createJourney(GenerateSchema(body))
     }
   
     /**
@@ -79,7 +106,7 @@ export class JourneyController {
      */
     public async update_one(
       request: string,
-      body: JourneySchema
+      body: JourneyRequest
     ): Promise<JourneyModel> {
       
       const verification = new StringVerification()
@@ -89,7 +116,7 @@ export class JourneyController {
       }
       return updateOneJourney(
         request,
-        body,
+        GenerateSchema(body),
       )
     }
 
@@ -101,7 +128,7 @@ export class JourneyController {
      */
      public async update_all_from_theseus(
       request: string,
-      body: JourneySchema
+      body: JourneyRequest
     ): Promise<JourneyModel[]> {
       
       const verification = new StringVerification()
@@ -109,10 +136,9 @@ export class JourneyController {
       {
         throw new BadIdRequest(request) as Error
       }
-
       return updateAllJourneyFromThesus(
         request,
-        body,
+        GenerateSchema(body),
       )
     }
 

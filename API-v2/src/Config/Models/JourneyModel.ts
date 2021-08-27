@@ -30,7 +30,7 @@ import {
     location!: string
 
     @Column({
-    type: "date"
+    type: "timestamp without time zone"
     })
     returnDate!: string
   
