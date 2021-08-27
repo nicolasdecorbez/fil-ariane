@@ -1,3 +1,4 @@
+import { DeleteResult } from "typeorm"
 import { UserModel } from "../Models"
 import {
   createUser,
@@ -5,10 +6,19 @@ import {
   getOneUser,
   getAllUsers,
   updateOneUser,
-  UserSchema
+  UserSchema,
+  getOneUserByPhone
 } from "../Repositories/UserRepo"
 import { StringVerification } from "../Security"
 
+/**
+ * [generate an error message when the id is not an int]
+ * @param id    [the string with the invalid id]
+ */
+ function BadIdRequest(id: string) {
+  this.name = "QueryFailedError"
+  this.message = "Invalid ID request : " + id + " -> Must be a number."
+}
 
 export class UserController {
 
@@ -32,23 +42,46 @@ export class UserController {
   }
 
   /**
-   *  [check the type of the request, then call the user repo to find one user in database]
-   *  @param  request [id or username to find]
+   *  [check if the request is valid, then call the user repo to find one user in database]
+   *  @param  request [id to find]
    *  @return         [a promise with the UserModel found, or null]
    */
   public async retrive_one(
     request: string
   ): Promise<UserModel> {
     const verification = new StringVerification()
+    if(!verification.verifyIdRequest(request))
+    {
+      throw new BadIdRequest(request) as Error
+    }
+    
     return getOneUser(
-      request,
-      verification.verifyIdRequest(request)
+      request
     )
   }
 
   /**
-   *  [check the type of the request, then call the user repo to update one user in database]
-   *  @param  request [id or username to find for update]
+   *  [check if the request is valid, then call the user repo to find one user in database]
+   *  @param  request [id to find]
+   *  @return         [a promise with the UserModel found, or null]
+   */
+  public async retrive_one_by_phone_number(
+    request: string
+  ): Promise<UserModel> {
+    const verification = new StringVerification()
+    if(!verification.verifyIdRequest(request))
+    {
+      throw new BadIdRequest(request) as Error
+    }
+    
+    return getOneUserByPhone(
+      request
+    )
+  }
+
+  /**
+   *  [check if the request is valid, then call the user repo to update one user in database]
+   *  @param  request [id to find for update]
    *  @param  body    [format the sent body to a UserSchema]
    *  @return         [a promise with the UserModel updated, or null]
    */
@@ -57,25 +90,33 @@ export class UserController {
     body: UserSchema
   ): Promise<UserModel> {
     const verification = new StringVerification()
+    if(!verification.verifyIdRequest(request))
+    {
+      throw new BadIdRequest(request) as Error
+    }
+
     return updateOneUser(
       request,
-      body,
-      verification.verifyIdRequest(request)
+      body
     )
   }
 
   /**
-   *  [check the type of the request, then call the user repo to delete one user in database]
-   *  @param  request [id or username to find for deletion]
+   *  [check if the request is valid, then call the user repo to delete one user in database]
+   *  @param  request [id to find for deletion]
    *  @return         [a promise with the UserModel deleted, or null]
    */
   public async delete_one(
     request: string
-  ): Promise<UserModel> {
+  ): Promise<DeleteResult> {
     const verification = new StringVerification()
+    if(!verification.verifyIdRequest(request))
+    {
+      throw new BadIdRequest(request) as Error
+    }
+
     return deleteOneUser(
-      request,
-      verification.verifyIdRequest(request)
+      request
     )
   }
 }

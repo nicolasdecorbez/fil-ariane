@@ -17,13 +17,6 @@ export class UserModel {
 
   @Column({
       type: "varchar",
-      length: "100",
-      unique: true
-  })
-  username!:string
-
-  @Column({
-      type: "varchar",
       length: "50"
   })
   firstName!: string
@@ -43,7 +36,6 @@ export class UserModel {
 
   @Column({
       type: "varchar",
-      length: "10",
       unique: true,
   })
   phone!: string

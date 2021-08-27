@@ -1,4 +1,4 @@
-import { getRepository } from "typeorm"
+import { DeleteResult, getRepository } from "typeorm"
 import { UserModel } from "../Models"
 
 /**
@@ -51,26 +51,16 @@ export const createUser = async (
 
 /**
  *  [async function to retrieve one user]
- *  @param  request     [id or username of the user to find]
- *  @param  isIdRequest [boolean to check if the request is an id]
- *  @return             [a promise with an UserModel, or null]
+ *  @param  request     [id of the user to find]
+ *  @return             [a promise with an UserModel]
  */
 export const getOneUser = async (
-  request: string,
-  isIdRequest: boolean
+  request: string
 ): Promise<UserModel> => {
 
   const userRepository = getRepository(UserModel)
   let user = null
-
-  if (isIdRequest)
-  {
-    user = await userRepository.findOne({ id: Number(request) })
-  }
-  else
-  {
-    user = await userRepository.findOne({ username: request })
-  }
+  user = await userRepository.findOne({ id: Number(request) })
     
   if (!user)
   {
@@ -80,29 +70,41 @@ export const getOneUser = async (
 }
 
 /**
- *  [async function to update one user]
- *  @param  request     [id or username of the user to update]
- *  @param  data        [description]
- *  @param  isIdRequest [boolean to check if the request is an id]
- *  @return             [description]
+ *  [async function to retrieve one user by its phone number]
+ *  @param  request     [phone number of the user to find]
+ *  @return             [a promise with an UserModel]
  */
-export const updateOneUser = async (
-  request: string,
-  data: UserSchema,
-  isIdRequest: boolean
+ export const getOneUserByPhone = async (
+  request: string
 ): Promise<UserModel> => {
 
   const userRepository = getRepository(UserModel)
   let user = null
+  user = await userRepository.findOne({ phone: request })
+    
+  if (!user)
+  {
+    throw new UserNotFound(
+      "phone number `" + request
+    ) as Error
+  }
+  return user
+}
 
-  if (isIdRequest)
-  {
-    user = await userRepository.findOne({ id: Number(request) })
-  }
-  else
-  {
-    user = await userRepository.findOne({ username: request })
-  }
+/**
+ *  [async function to update one user]
+ *  @param  request     [id of the user to update]
+ *  @param  data        [description]
+ *  @return             [description]
+ */
+export const updateOneUser = async (
+  request: string,
+  data: UserSchema
+): Promise<UserModel> => {
+
+  const userRepository = getRepository(UserModel)
+  let user = null
+  user = await userRepository.findOne({ id: Number(request) })
     
   if (!user)
   {
@@ -115,26 +117,16 @@ export const updateOneUser = async (
 
 /**
  *  [async function to delete one user]
- *  @param  request     [id or username of the user to delete]
- *  @param  isIdRequest [boolean to check if the request is an id]
- *  @return             [UserModel with affected user]
+ *  @param  request     [id of the user to delete]
+ *  @return             [DeleteResult with affected user]
  */
 export const deleteOneUser = async (
-  request: string,
-  isIdRequest: boolean
-): Promise<UserModel> => {
+  request: string
+): Promise<DeleteResult> => {
 
   const userRepository = getRepository(UserModel)
   let result = null
-
-  if (isIdRequest)
-  {
-    result = await userRepository.delete({ id: Number(request) })
-  }
-  else
-  {
-    result = await userRepository.delete({ username: request })
-  }
+  result = await userRepository.delete({ id: Number(request) })
 
   if (result.affected < 1)
   {
