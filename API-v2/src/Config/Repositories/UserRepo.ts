@@ -1,6 +1,10 @@
 import { getRepository } from "typeorm"
 import { UserModel } from "../Models"
 
+/**
+ * [generate an error message if the user doesn't exists]
+ * @param user      [the id/username of the user]
+ */
 function UserNotFound(user) {
   this.name = "NotFoundError"
   this.message = "User " + user + " not found."
