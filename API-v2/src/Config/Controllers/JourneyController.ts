@@ -177,6 +177,12 @@ export class JourneyController {
       return deleteAllJourneyOfTheseus(request)
     }
 
+    /**
+     *  [check if the request is valid, then call the journey repo to find one journey with a pair of Theseus and Ardiane ids]
+     *  @param ardianeId [id of the ardiane to find]
+     *  @param theseusId [id of the theseus to find]
+     *  @returns         [a promise with the JourneyModel]
+     */
     public async get_pair(
       ardianeId: string,
       theseusId: string

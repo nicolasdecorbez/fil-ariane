@@ -119,7 +119,8 @@ router.get("/theseus/:id", async (req, res) => {
 })
 
 /**
- * TODO: doc router controller repo
+ *  [GET one journey with a pair of Theseus and Ardiane ids async route]
+ *  @return               [status + response]
  */
 router.get("/theseus/:theseusId/ardiane/:ardianeId", async (req, res) => {
   try {

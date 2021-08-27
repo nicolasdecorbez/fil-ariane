@@ -197,6 +197,12 @@ export const deleteAllJourneyOfTheseus = async (
   return result
 }
 
+/**
+ *  [async function to retrieve one journey with both Theseus and Ardiane ids]
+ *  @param ardianeReq [id of the ardiane to find]
+ *  @param theseusReq [id of the theseus to find]
+ *  @returns          [a promise with the JourneyModel]
+ */
 export const getPairOfTheseusAndArdiane = async (
   ardianeReq: string,
   theseusReq: string
@@ -216,6 +222,6 @@ export const getPairOfTheseusAndArdiane = async (
        ardianeReq
     ) as Error
   }
-  
+
   return journey
 }
