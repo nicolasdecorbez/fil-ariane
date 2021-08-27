@@ -30,7 +30,7 @@ function BadIdRequest(id: string) {
  * @returns     [the JourneySchema to send to repo]
  */
 function GenerateSchema(input: JourneyRequest): JourneySchema {
-    let schema: JourneySchema = {
+    const schema: JourneySchema = {
       ardianeId: input.ardianeId,
       theseusId: input.theseusId,
       returnDate: input.returnDate,
