@@ -1,3 +1,4 @@
 import { UserModel } from "./UserModel"
 import { MessageModel } from "./MessageModel"
-export { UserModel, MessageModel }
+import { JourneyModel } from "./JourneyModel"
+export { UserModel, MessageModel, JourneyModel }

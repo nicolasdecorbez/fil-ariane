@@ -9,10 +9,16 @@ import {
 } from "../Repositories/MessageRepo"
 import { StringVerification } from "../Security"
 
+
+/**
+ * [generate an error message when the id is not an int]
+ * @param id    [the string with the invalid id]
+ */
 function BadIdRequest(id: string) {
   this.name = "QueryFailedError"
   this.message = "Invalid ID request : " + id + " -> Must be a number."
 }
+
 
 export class MessageController {
 

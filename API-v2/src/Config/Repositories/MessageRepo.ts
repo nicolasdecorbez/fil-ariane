@@ -1,6 +1,12 @@
 import { getRepository } from "typeorm"
 import { MessageModel } from "../Models"
 
+
+/**
+ * [generate an error message if the id of the type doesn't exists]
+ * @param type    [the type of the ressource]
+ * @param id      [the id of the ressource]
+ */
 function ErrorNotFound(type: string, id: string) {
   this.name = "NotFoundError"
   this.message = type + " " + id + " not found."
