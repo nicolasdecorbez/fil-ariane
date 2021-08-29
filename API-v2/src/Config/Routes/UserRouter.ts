@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 })
 
 /**
- *  [GET one user by id or username async route]
+ *  [GET one user by id async route]
  *  @return               [status + response]
  */
 router.get("/:user", async (req, res) => {
@@ -49,7 +49,21 @@ router.get("/:user", async (req, res) => {
 })
 
 /**
- *  [PUT one user by id or username async route]
+ *  [GET one user by its phone number async route]
+ *  @return               [status + response]
+ */
+ router.get("/phone/:phone", async (req, res) => {
+  try {
+    const response = await userController.retrive_one_by_phone_number(req.params.phone)
+    return res.status(200).send(response)  
+  } catch (error) {
+    const code = httpError.readError(error)
+    return res.status(code).send(error)
+  }
+})
+
+/**
+ *  [PUT one user by id async route]
  *  @return               [status + response]
  */
 router.put("/:user", async (req, res) => {
@@ -63,7 +77,7 @@ router.put("/:user", async (req, res) => {
 })
 
 /**
- *  [DELETE one user by id or username async route]
+ *  [DELETE one user by id async route]
  *  @return               [status + response]
  */
 router.delete("/:user", async (req, res) => {
