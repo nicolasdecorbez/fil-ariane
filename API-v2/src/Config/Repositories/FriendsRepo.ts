@@ -1,4 +1,4 @@
-import { DeleteResult, getRepository } from "typeorm"
+import { getRepository } from "typeorm"
 import { FriendsModel } from "../Models"
 
 
@@ -39,9 +39,9 @@ export const createFriends = async (
 
 export const getAllFriendsIds = async (
   request: string
-): Promise<Number[]> => {
+): Promise<number[]> => {
 
-  const friendsIds = new Array
+  const friendsIds = []
   const friendsRepository = getRepository(FriendsModel)
 
   const friendsList = await friendsRepository.find({

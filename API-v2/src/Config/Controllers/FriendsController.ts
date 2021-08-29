@@ -32,7 +32,7 @@ export class FriendsController {
      *  @param  request [the id of the user to find]
      *  @return         [a promise with the an array of ids]
      */
-    public async retrieve_all_friends(request: string): Promise<Number[]> {
+    public async retrieve_all_friends(request: string): Promise<number[]> {
       
       const verification = new StringVerification()
       if(!verification.verifyIdRequest(request))
