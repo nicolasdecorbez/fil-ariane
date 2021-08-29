@@ -1,4 +1,5 @@
 import { UserController } from "./UserController"
 import { MessageController } from "./MessageController"
 import { JourneyController } from "./JourneyController"
-export { UserController, MessageController, JourneyController }
+import { FriendsController } from "./FriendsController"
+export { UserController, MessageController, JourneyController, FriendsController }
