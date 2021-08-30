@@ -58,6 +58,7 @@ Here is a list of all routes implemented to our API.
     - `email` : **unique**, *string*
     - `firstName` : *string*
     - `lastName` : *string*
+    - `password` : *string*
 - ***Return*** : an object with the user created.
 
 ### - **PUT** *->* modify one user : `/users/:id`
@@ -69,6 +70,7 @@ Here is a list of all routes implemented to our API.
     - `email` : **unique**, *string*
     - `firstName` : *string*
     - `lastName` : *string*
+    - `password` : *string*
 - ***Return*** : an object with the user updated.
 
 ### - **DELETE** *->* delete one user : `/users/:id`
