@@ -186,7 +186,7 @@ Here is a list of all routes implemented to our API.
 ### - **GET** *->* retireve all friends of one user : `/friends/:id`
 
 - ***Parameters*** : 
-  - `d` : the id of the user to find.
+  - `id` : the id of the user to find.
 - ***Return*** : an array with all its friends ids.
 
 ### - **POST** *->* create new friends : `/friends`
