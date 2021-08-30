@@ -28,6 +28,11 @@ export class UserModel {
   lastName!: string
 
   @Column({
+      type: "varchar"
+  })
+  password!: string
+
+  @Column({
       type: "varchar",
       length: "100",
       unique: true,

@@ -15,9 +15,9 @@ function UserNotFound(user) {
  *  @return [nothing]
  */
 export interface UserSchema {
-  username: string
   firstName: string
   lastName: string
+  password: string
   email: string
   phone: string
 }

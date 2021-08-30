@@ -38,6 +38,8 @@ export class UserController {
   public async create(
     body: UserSchema
   ): Promise<UserModel> {
+    const verification = new StringVerification()
+    body.password = verification.encryptPassword(body.password)
     return createUser(body)
   }
 
@@ -93,6 +95,11 @@ export class UserController {
     if(!verification.verifyIdRequest(request))
     {
       throw new BadIdRequest(request) as Error
+    }
+
+    if(body.password)
+    {
+      body.password = verification.encryptPassword(body.password)
     }
 
     return updateOneUser(
