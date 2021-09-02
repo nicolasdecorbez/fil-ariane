@@ -3,7 +3,8 @@ version: "3"
 
 
 services:
-  apiv2:
+
+  api:
     container_name: ardiane_api
     image: ardianethread/ardiane_api
     depends_on:
@@ -24,6 +25,8 @@ services:
       POSTGRES_USER: "ardiane"
       POSTGRES_PASSWORD: "password"
       POSTGRES_DB: "ardiane"
+    labels:
+      - traefik.enable=false
     restart: on-failure
     volumes:
       - "ardiane-data:/var/lib/postgresql/data"
@@ -36,11 +39,22 @@ services:
       - traefik.http.routers.dashboard.service=api@internal
     ports:
       - "80:80"
-      - "8080:8080"
     restart: on-failure
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./traefik/traefik.toml:/traefik.toml"
+
+  pgadmin:
+    container_name: ardiane_pgadmin
+    image: dpage/pgadmin4:5
+    depends_on:
+      - database
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: my-secret-pw 
+    labels:
+      - traefik.http.routers.pgadmin.rule=Host(`pgadmin.ardiane.com`)
+    restart: always
 
 
 volumes:
