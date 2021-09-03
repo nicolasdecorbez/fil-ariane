@@ -1,0 +1,68 @@
+<mat-toolbar>
+  <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Ardiane's Thread Dashboard</span>
+  <span class="spacer"></span>
+
+  <button mat-icon-button 
+          aria-label="Example icon-button with share icon"
+          *ngIf="!authStatus"
+          (click)="onSignIn()">
+    <mat-icon>login</mat-icon>
+  </button>
+
+  <button mat-icon-button 
+          aria-label="Example icon-button with share icon"
+          *ngIf="authStatus"
+          (click)="onSignOut()">
+    <mat-icon routerLink="auth">logout</mat-icon>
+  </button>
+
+</mat-toolbar>
+
+
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <div class="navigation">
+
+      <a routerLink="">
+        <div class="navigation-link">
+          <p>Home</p>
+          <mat-icon>home</mat-icon>
+        </div>
+      </a>
+      <a routerLink="database">
+        <div class="navigation-link">
+          <p>Database</p>
+          <mat-icon>storage</mat-icon>
+        </div>
+      </a>
+      <a routerLink="server">
+        <div class="navigation-link">
+          <p>Server status</p>
+          <mat-icon>language</mat-icon>
+        </div>
+      </a>
+      <a href="http://pgadmin.ardiane.com" target="_blank" rel="noopener noreferrer">
+        <div class="navigation-link">
+          <p>Database Administration</p>
+          <mat-icon>open_in_new</mat-icon>
+        </div>
+      </a>
+      <a href="http://proxy.ardiane.com" target="_blank" rel="noopener noreferrer">
+        <div class="navigation-link">
+          <p>Reverse-Proxy</p>
+          <mat-icon>open_in_new</mat-icon>
+        </div>
+      </a>
+      
+    </div>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content class="sidenav">
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

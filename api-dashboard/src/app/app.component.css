@@ -1,0 +1,59 @@
+.container {
+  position: absolute;
+  top: 63px;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+}
+
+.sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 270px;
+}
+
+.navigation {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navigation a {
+  width: 96%;
+  margin: 2%;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+.navigation a:hover {
+  background-color: rgb(43, 43, 43);
+  color: goldenrod;
+  animation-duration: 500ms;
+}
+
+.navigation-link {
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  height: 50px;
+  font-size: 1.2rem;
+  align-items: center;
+}
+
+.navigation-link p {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+}
+
+
+.navigation-link {
+  display: flex;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
