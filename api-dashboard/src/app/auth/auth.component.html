@@ -1,0 +1,9 @@
+<h2>Auth</h2>
+<div class="btn-toolbar">
+  <button class="btn btn-success"
+          *ngIf="!authStatus"
+          (click)="onSignIn()">Login</button>
+  <button class="btn btn-danger"
+          *ngIf="authStatus"
+          (click)="onSignOut()">Logout</button>
+</div>
