@@ -3,11 +3,13 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.sass']
+  styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
 
   constructor() { }
+
+  logo = "../../assets/logo.png"
 
   ngOnInit(): void {
   }
