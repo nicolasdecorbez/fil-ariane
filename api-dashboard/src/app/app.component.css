@@ -13,6 +13,10 @@
   width: 270px;
 }
 
+.content {
+  padding: 20px;
+}
+
 .navigation {
   height: 100%;
   width: 100%;
@@ -47,11 +51,6 @@
   flex: 1;
   margin: 0;
   padding: 0;
-}
-
-
-.navigation-link {
-  display: flex;
 }
 
 .spacer {
