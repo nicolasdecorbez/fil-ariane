@@ -1,9 +1,23 @@
-<h2>Auth</h2>
-<div class="btn-toolbar">
-  <button class="btn btn-success"
-          *ngIf="!authStatus"
-          (click)="onSignIn()">Login</button>
-  <button class="btn btn-danger"
-          *ngIf="authStatus"
-          (click)="onSignOut()">Logout</button>
-</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSignIn()">
+  <div mat-dialog-content>
+    <h1>Login form : </h1>
+    <p style="margin-top: -15px; margin-bottom: 20px; color: lightsteelblue;">Please complete every followings fields with your credentials.</p>
+    
+    <mat-form-field appearance="fill">
+      <mat-label>Email address</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" required>
+      <mat-error *ngIf="password.invalid">{{getNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div mat-dialog-actions>
+    <button type="submit" mat-raised-button style="background-color: green;" [disabled]="!loginForm.valid">Login</button>
+  </div>
+
+</form>
