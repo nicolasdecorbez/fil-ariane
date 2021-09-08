@@ -19,3 +19,8 @@ export class AuthService {
     this.isAuth = false;
   }
 }
+
+export interface LoginInterface {
+  email: string;
+  password: string;
+};
