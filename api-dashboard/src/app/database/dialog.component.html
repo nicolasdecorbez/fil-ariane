@@ -1,0 +1,44 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>  
+    <h1>User creation : </h1>
+    <p style="margin-top: -15px; margin-bottom: 20px; color: lightsteelblue;">Please complete every followings fields.</p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstName" required>
+      <mat-error *ngIf="firstName.invalid">{{getNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Last name</mat-label>
+      <input matInput formControlName="lastName" required>
+      <mat-error *ngIf="lastName.invalid">{{getNameErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Email address</mat-label>
+      <input matInput formControlName="email" required>
+      <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Phone number</mat-label>
+      <input matInput formControlName="phone" required>
+      <mat-error *ngIf="phone.invalid">{{getPhoneErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" required>
+      <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button type="submit" mat-raised-button style="background-color: green;" [disabled]="!userForm.valid">Save</button>
+    <button mat-raised-button cdkFocusInitial (click)="onNoClick()" color="primary">Discard Changes</button>
+  </div>
+
+</form>
+  
