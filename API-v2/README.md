@@ -1,6 +1,6 @@
 # API v2
 
-On a ici notre deuxième version de notre main API. Comparé à la `v1`, j'ai implémenté plusieurs fonctionnalités dans cette dernière :
+On a ici notre deuxième version de notre main API. Comparé à la `v1`, on a implémenté plusieurs fonctionnalités dans cette dernière :
 - Utilisation d'un [ORM](https://blog.bitsrc.io/what-is-an-orm-and-why-you-should-use-it-b2b6f75f5e2a) : *[typeorm](https://typeorm.io/#/)*. Il va surtout nous servir à attaquer notre DB plus facilement en créant :
   - Des [Models](src/Models) : ce sont nos schéma de base de données.
   - Des [Repositories](src/Repositories) : nos méthodes pour attaquer notre DB.

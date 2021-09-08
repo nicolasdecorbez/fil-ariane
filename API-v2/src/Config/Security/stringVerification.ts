@@ -3,13 +3,21 @@ import CryptoJS from "crypto-js"
 export default class StringVerification {
 
   /**
-   *  [check if input string is only made of digits]
+   *  [check if input string is only made of digits and positive]
    *  @param  input   [the string to check]
-   *  @return         [true if the string is only made of digits]
+   *  @return         [true if the string is only made of digits and positive]
    */
   public verifyIdRequest(input: string):boolean {
     const regex = /^\d+$/
-    return regex.test(input)
+    if (regex.test(input)) 
+    {
+      const number = Number(input)
+      if (number > 0) 
+      {
+        return true
+      }
+    }
+    return false
   }
 
   /**
