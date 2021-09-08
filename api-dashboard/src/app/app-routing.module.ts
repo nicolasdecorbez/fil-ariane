@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthComponent } from './auth/auth.component';
 import { DatabaseComponent } from './database/database.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { MainComponent } from './main/main.component';
@@ -9,10 +8,6 @@ import { ServerComponent } from './server/server.component';
 import { AuthGuard } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { 
-    path: 'auth', 
-    component: AuthComponent
-  },
   { 
     path: 'database',
     canActivate: [AuthGuard],

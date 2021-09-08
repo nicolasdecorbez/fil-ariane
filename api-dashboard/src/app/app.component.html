@@ -1,21 +1,21 @@
 <mat-toolbar>
-  <button mat-icon-button aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+  <button mat-icon-button aria-label="Sidenav toggle button" (click)="sidenav.toggle()" *ngIf="authStatus">
     <mat-icon>menu</mat-icon>
   </button>
   <span>Ardiane's Thread Dashboard</span>
   <span class="spacer"></span>
 
   <button mat-icon-button 
-          aria-label="Example icon-button with share icon"
+          aria-label="If the user is not logged in, display a login button"
           *ngIf="!authStatus"
-          (click)="onSignIn()">
+          (click)="toggleAuth()">
     <mat-icon>login</mat-icon>
   </button>
 
   <button mat-icon-button 
-          aria-label="Example icon-button with share icon"
+          aria-label="If the user is logged in, display a logout button"
           *ngIf="authStatus"
-          (click)="onSignOut()">
+          (click)="onSignOut(); sidenav.close()">
     <mat-icon routerLink="auth">logout</mat-icon>
   </button>
 
@@ -23,7 +23,7 @@
 
 
 <mat-sidenav-container class="container">
-  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+  <mat-sidenav #sidenav mode="side" class="sidenav">
     <div class="navigation">
 
       <a routerLink="">

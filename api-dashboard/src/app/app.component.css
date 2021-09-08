@@ -56,3 +56,9 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.mygoodsnackbar {
+  background-color: green;
+  color: aliceblue;
+}
+  
