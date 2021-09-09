@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/message_button"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="@string/contact_menu"
+
+        app:showAsAction="ifRoom">
+
+    </item>
+    <item
+        android:id="@+id/home_button"
+        android:icon="@drawable/thesee_amph"
+
+        android:title="Home"
+        app:showAsAction="ifRoom"></item>
+    <item
+        android:id="@+id/contact_button"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="@string/contact_menu"
+
+        app:showAsAction="ifRoom">
+
+    </item>
+    <item
+        android:id="@+id/item1"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/options_menu"
+        app:showAsAction="ifRoom">
+        <menu
+            android:id="@+id/submenu_settings"
+            android:title="@string/parameters_item"
+            app:showAsAction="ifRoom">
+            <item
+                android:id="@+id/subitem_Login"
+                android:title="@string/login_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_register"
+                android:title="@string/register_item"
+                app:showAsAction="ifRoom" />
+
+            <item
+                android:id="@+id/subitem_rescue"
+                android:title="@string/rescue_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_profile"
+                android:title="@string/profile_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_update"
+                android:title="@string/update_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_alarm"
+                android:title="@string/alarm_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_notif"
+                android:title="@string/notif_item"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/subitem_logout"
+                android:title="@string/logout_item"
+                app:showAsAction="ifRoom" />
+
+        </menu>
+    </item>
+</menu>
