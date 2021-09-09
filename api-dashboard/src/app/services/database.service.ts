@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 
@@ -11,7 +11,7 @@ export interface UsersInterface {
   password: string;
 };
 
-export const URL = "http://localhost:9000/users";
+export const URL = "http://api.ardiane.com/users";
 
 @Injectable()
 export class DatabaseService {
