@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ProfileFragment"
+    android:background="@color/black">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="150dp"
+                android:layout_height="3dp"
+                android:layout_centerInParent="false"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:background="#ECCC70"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="728dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/autour_one"
+                android:text="@string/profile_item"
+                android:textColor="#EED082"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/top_bar"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/editTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="Name"
+                android:inputType="textPersonName"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextPersonName2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/user_firstname"
+                android:inputType="textPersonName"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/user_phone"
+                android:inputType="phone"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextEmailAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/prompt_email"
+                android:inputType="textEmailAddress"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextBloodType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/user_bt"
+                android:inputType="textPersonName"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextHid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/user_hid"
+                android:inputType="textPersonName"
+                android:textColor="#EED082"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/outlinedButton"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/save_profile"
+                android:textColor="#EED082"
+                app:strokeColor="#EED082" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

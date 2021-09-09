@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.fragment_register"
+    android:id="@+id/register_container"
+    android:background="@color/black">
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="448dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/autour_one"
+        android:gravity="center_horizontal"
+        android:hint="@string/register_item"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#EED082"
+        android:textSize="60dp"
+        app:autoSizeTextType="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/editTextPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:fontFamily="@font/autour_one"
+        android:inputType="textPersonName"
+        android:hint="@string/user_name"
+        android:textColor="#EED082"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextPersonName2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/editTextPersonName"
+        android:ems="10"
+        android:fontFamily="@font/autour_one"
+        android:inputType="textPersonName"
+        android:hint="@string/user_firstname"
+        android:textColor="#EED082"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/editTextPersonName2"
+        android:ems="10"
+        android:fontFamily="@font/autour_one"
+        android:inputType="phone"
+        android:hint="@string/user_phone"
+        android:textColor="#EED082"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editTextEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_below="@+id/editTextPhone"
+        android:ems="10"
+        android:fontFamily="@font/autour_one"
+        android:inputType="textEmailAddress"
+        android:hint="@string/prompt_email"
+        android:textColor="#EED082"
+        android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/register_button"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/editTextEmailAddress"
+                android:layout_centerHorizontal="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="64dp"
+                android:fontFamily="@font/autour_one"
+                android:hint="@string/register_item"
+                android:textColor="#EED082"
+                app:layout_constraintVertical_bias="0.97"
+                app:strokeColor="#EED082" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
