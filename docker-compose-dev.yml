@@ -16,6 +16,17 @@ services:
       DATABASE_HOST: "database"
     labels:
       - traefik.http.routers.api.rule=Host(`api.ardiane.local`)
+      - traefik.http.routers.api.middlewares=cors@docker
+    restart: on-failure
+
+  db_dashboard:
+    container_name: ardiane_dashboard
+    build: ./api-dashboard
+    depends_on: 
+      - api
+    labels: 
+      - traefik.http.routers.db_dashboard.rule=Host(`dashboard.ardiane.local`)
+      - traefik.http.routers.db_dashboard.middlewares=cors@docker
     restart: on-failure
 
   database:
@@ -37,6 +48,9 @@ services:
     labels:
       - traefik.http.routers.dashboard.rule=Host(`proxy.ardiane.local`)
       - traefik.http.routers.dashboard.service=api@internal
+      - traefik.http.middlewares.cors.headers.accesscontrolalloworigin=*
+      - traefik.http.middlewares.cors.headers.accesscontrolallowheaders=Content-Type
+      - traefik.http.middlewares.cors.headers.addvaryheader=true
     ports:
       - "80:80"
     restart: on-failure
