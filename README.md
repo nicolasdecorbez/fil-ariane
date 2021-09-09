@@ -1,12 +1,18 @@
-# Ardiane's Thread API
+# Ardiane's Thread Project
 
 ## What is this ? 
 
 This is a repository for our end-of-year project at ETNA, **Ardiane's Thread**.
 
+The mobile application written in Kotlin, uses the Volley Library to handle Request, and GoogleApi for the Maps options. 
+
+The dashboard coded with Angular v12, using Material Library.
+
 The API, written in [TypeScript](https://github.com/microsoft/TypeScript), it is based on the [Express](https://github.com/expressjs/express) framework ; using [TypeORM](https://github.com/typeorm/typeorm), it connects to a [PostgreSQL](https://github.com/postgres/postgres) database. We also have implemented [CORS](https://www.npmjs.com/package/cors) managment for all of our routes.
 
 ## Installation
+
+To run application, you must use a Virtual Machine via the AVD Manager in Android Studio or with a physical smartphone devices, running in Android environnement.
 
 To run the API, you must setup your (or a virtual) machine based on Debian 10. To do so, we provided you a configuration script, located in the [configuration](./configuration/) folder. 
 
@@ -18,8 +24,10 @@ This done, the API can be launched by running `docker-compose up` at the root of
 
 ## Stack description
 
-For the API, we implemented 3 different services : 
+For the API, we implemented 5 different services : 
 - The API
+- The Dashboard
+- PgAdmin Instance
 - A PostgreSQL database
 - A Traefik instance as a reverse-proxy
 
