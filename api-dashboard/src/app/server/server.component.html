@@ -1,0 +1,18 @@
+<h1>Server supervision</h1>
+<h3>Here, you will find more informations about the server and the API.</h3>
+
+<div class="server-container">
+  
+  <mat-card class="card" style="background: green;" *ngIf="serverStatusCode < 400">
+    <mat-card-title>Server is up !</mat-card-title>
+    <mat-card-subtitle>API URL : api.ardiane.com</mat-card-subtitle>
+    <div><mat-icon [inline]="true">check_circle</mat-icon></div>
+  </mat-card>
+
+  <mat-card class="card" style="background: crimson;" *ngIf="serverStatusCode >= 400">
+    <mat-card-title>Server is down !</mat-card-title>
+    <mat-card-subtitle>We are curently on this problem. Please try again later !</mat-card-subtitle>
+    <div><mat-icon [inline]="true">dangerous</mat-icon></div>
+  </mat-card>
+
+</div>

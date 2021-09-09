@@ -14,12 +14,15 @@ const app = express()
 /**
  *  CORS configuration allowing every origins 
  */
-const allowedOrigins = ["*"]
-const options: cors.CorsOptions = {
-  origin: allowedOrigins
-}
+// const allowedOrigins = ["*"]
+// const options: cors.CorsOptions = {
+//   origin: allowedOrigins,
+  
+// }
 
-app.use(cors(options))
+app.use(cors())
+app.options("*", cors())
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(Router)

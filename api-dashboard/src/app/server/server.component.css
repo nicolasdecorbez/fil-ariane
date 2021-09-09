@@ -1,0 +1,24 @@
+.server-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80%;
+}
+
+mat-card {
+  width: 500px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+mat-card div {
+  font-size: 400px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

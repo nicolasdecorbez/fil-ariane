@@ -1,0 +1,45 @@
+<h1>Database managment</h1>
+<h3>Here, you have a list of every users registered on our application. You can find more informations about each user written into our database. Also, you will be able to add a new user by using the following button.</h3>
+
+<div class="buttons">
+  <button mat-fab color="primary"
+          aria-label="Update the users list"
+          (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
+
+  <button mat-fab color="accent" 
+          aria-label="create a new user"
+          (click)="toggleForm()"
+          style="background-color: lightskyblue;">
+    <mat-icon>person_add</mat-icon>
+  </button>
+</div>
+
+
+<table mat-table [dataSource]="users" class="mat-elevation-z8">
+  
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef> First name </th>
+    <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef> Last name </th>
+    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef> Phone </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
