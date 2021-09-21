@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/docker.yml/badge.svg)](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/docker.yml) [![ESLint](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/linter.yml/badge.svg)](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/linter.yml) [![Routes check](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/routes.yml/badge.svg)](https://github.com/nicolasdecorbez/fil-ariane/actions/workflows/routes.yml)
+
 # Ardiane's Thread Project
 
 ## What is this ? 
