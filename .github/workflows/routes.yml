@@ -3,6 +3,8 @@ name: Routes check
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   load-docker-image:
@@ -40,7 +42,7 @@ jobs:
         run: docker image inspect ardianethread/ardiane_api:test
       -
         name: Run the API
-        run: docker run --name ardiane-api --network $(docker network ls --filter=name="github_network*" --quiet) -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres -d ardianethread/ardiane_api:test
+        run: docker run --name ardiane-api --network $(docker network ls --filter=name="github_network*" --quiet) -e DATABASE_DB=ardiane -e DATABASE_HOST=postgres -d ardianethread/ardiane_api:test && sleep 15
       - 
         name: Pull newman image
         run: docker pull postman/newman
